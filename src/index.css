@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gallery-bg: #FBF9F5;
+  --color-gallery-card: #FFFFFF;
+  --color-gallery-dark: #1C1917;
+  --color-gallery-terracotta: #C85A32;
+  --color-gallery-celadon: #8EA89D;
+  --color-gallery-sand: #E7DFD5;
+  --color-gallery-muted: #78716C;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-gallery-bg);
+  color: var(--color-gallery-dark);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}

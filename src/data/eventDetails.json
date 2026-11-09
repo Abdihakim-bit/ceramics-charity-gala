@@ -1,0 +1,68 @@
+{
+  "schedule": [
+    {
+      "time": "6:30 PM",
+      "title": "Welcome Reception & Private Viewing",
+      "description": "Cocktails, artisanal pairings, and initial preview of the permanent ceramics conservation wing."
+    },
+    {
+      "time": "7:30 PM",
+      "title": "Keynote: Endangered Kilns of Oaxaca & East Asia",
+      "description": "Curatorial presentation on safeguarding smoke-fired Zapotec burnishing and high-fire celadon methods."
+    },
+    {
+      "time": "8:30 PM",
+      "title": "Live Masterclass Demonstration",
+      "description": "Live wheel-throwing and Kintsugi lacquer restoration demonstration by guest master artisans."
+    },
+    {
+      "time": "9:30 PM",
+      "title": "Benefit Auction & Conservation Fundraiser",
+      "description": "Live bidding on donated works to fund the 2027 KWAG Ceramic Residency & youth apprenticeships."
+    }
+  ],
+  "tiers": [
+    {
+      "id": "supporter",
+      "name": "Supporter Pass",
+      "price": 125,
+      "badge": "Standard",
+      "description": "Full access to reception, keynotes, live demonstrations, and silent auction.",
+      "perks": [
+        "Reception entry & welcome beverage",
+        "Access to curatorial keynotes",
+        "Commemorative exhibition catalog",
+        "$60 official tax receipt"
+      ]
+    },
+    {
+      "id": "patron",
+      "name": "Patron Circle",
+      "price": 275,
+      "badge": "Most Popular",
+      "featured": true,
+      "description": "Elevated gala experience with private artist meet-and-greets and catalog recognition.",
+      "perks": [
+        "All Supporter privileges",
+        "VIP lounge & private cellar tasting",
+        "Signed limited-edition exhibition print",
+        "Named acknowledgment in KWAG gallery catalog",
+        "$175 official tax receipt"
+      ]
+    },
+    {
+      "id": "benefactor",
+      "name": "Founding Benefactor",
+      "price": 600,
+      "badge": "VIP Access",
+      "description": "Premier admission for philanthropists championing living ceramic cultural traditions.",
+      "perks": [
+        "All Patron Circle privileges",
+        "Private dinner with keynote curators & artisans",
+        "Exclusive hand-thrown ceramic vessel gift",
+        "Year-long honorary KWAG Member Patron status",
+        "$450 official tax receipt"
+      ]
+    }
+  ]
+}
