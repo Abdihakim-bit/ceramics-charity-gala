@@ -2,23 +2,33 @@
   "schedule": [
     {
       "time": "6:30 PM",
-      "title": "Welcome Reception & Private Viewing",
-      "description": "Cocktails, artisanal pairings, and initial preview of the permanent ceramics conservation wing."
+      "title": "Welcome Reception & Preview",
+      "location": "CEC Coworking Space",
+      "description": "Guest arrivals, signature beverages, artisanal pairings, and private viewing of the charity ceramic showcase."
     },
     {
       "time": "7:30 PM",
-      "title": "Keynote: Endangered Kilns of Oaxaca & East Asia",
-      "description": "Curatorial presentation on safeguarding smoke-fired Zapotec burnishing and high-fire celadon methods."
+      "title": "Opening Address & Curatorial Keynote",
+      "location": "CEC Coworking Space",
+      "description": "Keynote presentation on safeguarding indigenous ceramic methods, high-fire kilns, and global conservation initiatives."
     },
     {
       "time": "8:30 PM",
-      "title": "Live Masterclass Demonstration",
-      "description": "Live wheel-throwing and Kintsugi lacquer restoration demonstration by guest master artisans."
+      "title": "Live Masterclass Ceramic Demonstration",
+      "location": "CEC Coworking Space",
+      "description": "Live wheel-throwing, decorative carving, and traditional Kintsugi lacquer repair demonstrated by guest resident artisans."
     },
     {
       "time": "9:30 PM",
-      "title": "Benefit Auction & Conservation Fundraiser",
-      "description": "Live bidding on donated works to fund the 2027 KWAG Ceramic Residency & youth apprenticeships."
+      "title": "Charity Auction & Conservation Fundraiser",
+      "location": "CEC Coworking Space",
+      "description": "Live auction of premier 3D-scanned archival replicas and donated contemporary works supporting the 2027 Residency Fund."
+    },
+    {
+      "time": "10:30 PM",
+      "title": "Closing Toast & Private Collection Access",
+      "location": "CEC Coworking Space",
+      "description": "Closing remarks, patron acknowledgments, winning bidder registrations, and dessert reception."
     }
   ],
   "tiers": [
@@ -26,13 +36,14 @@
       "id": "supporter",
       "name": "Supporter Pass",
       "price": 125,
-      "badge": "Standard",
+      "badge": "Standard Tier",
+      "featured": false,
       "description": "Full access to reception, keynotes, live demonstrations, and silent auction.",
       "perks": [
         "Reception entry & welcome beverage",
-        "Access to curatorial keynotes",
-        "Commemorative exhibition catalog",
-        "$60 official tax receipt"
+        "Admission to curatorial keynotes & demonstrations",
+        "Printed exhibition program & catalog",
+        "$60 official charitable tax donation receipt"
       ]
     },
     {
@@ -41,27 +52,29 @@
       "price": 275,
       "badge": "Most Popular",
       "featured": true,
-      "description": "Elevated gala experience with private artist meet-and-greets and catalog recognition.",
+      "description": "Elevated gala experience with priority seating, VIP lounge access, and catalog recognition.",
       "perks": [
-        "All Supporter privileges",
-        "VIP lounge & private cellar tasting",
-        "Signed limited-edition exhibition print",
-        "Named acknowledgment in KWAG gallery catalog",
-        "$175 official tax receipt"
+        "All Supporter Pass privileges",
+        "VIP lounge access & private tasting bar",
+        "Reserved front-row demonstration seating",
+        "Commemorative ceramic exhibition print",
+        "Named acknowledgment in official Gala program",
+        "$175 official charitable tax donation receipt"
       ]
     },
     {
       "id": "benefactor",
       "name": "Founding Benefactor",
       "price": 600,
-      "badge": "VIP Access",
-      "description": "Premier admission for philanthropists championing living ceramic cultural traditions.",
+      "badge": "VIP Benefactor",
+      "featured": false,
+      "description": "Premier gala patron status championing living artisan fellowships and heritage preservation.",
       "perks": [
         "All Patron Circle privileges",
-        "Private dinner with keynote curators & artisans",
-        "Exclusive hand-thrown ceramic vessel gift",
-        "Year-long honorary KWAG Member Patron status",
-        "$450 official tax receipt"
+        "Private pre-reception dinner with keynote curators & master artisans",
+        "Exclusive hand-thrown ceramic vessel gift created by resident artist",
+        "Annual honorary Benefactor patron membership",
+        "$450 official charitable tax donation receipt"
       ]
     }
   ]

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle, ShieldCheck, User, Mail, Users } from 'lucide-react';
+import { X, CheckCircle, ShieldCheck, User, Mail } from 'lucide-react';
 import eventDetails from '../data/eventDetails.json';
 
 interface TicketModalProps {
@@ -9,20 +9,22 @@ interface TicketModalProps {
 }
 
 export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId, onClose }) => {
-  const [tier, setTier] = useState<string>(selectedTierId || 'patron');
+  const [userSelectedTier, setUserSelectedTier] = useState<string | null>(null);
+  const [prevSelectedTierId, setPrevSelectedTierId] = useState(selectedTierId);
   const [guestCount, setGuestCount] = useState<number>(1);
   const [formData, setFormData] = useState({ name: '', email: '', dietary: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  useEffect(() => {
-    if (selectedTierId) {
-      setTier(selectedTierId);
-    }
-  }, [selectedTierId]);
+  // Derive active tier: if the parent passed a new tier, reset user selection
+  if (selectedTierId !== prevSelectedTierId) {
+    setPrevSelectedTierId(selectedTierId);
+    setUserSelectedTier(null);
+  }
+
+  const tier = userSelectedTier || selectedTierId || 'patron';
 
   useEffect(() => {
-    // ESC key closes modal
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
@@ -44,15 +46,15 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate booking submission
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
-    }, 900);
+    }, 700);
   };
 
   const handleResetAndClose = () => {
     setIsSuccess(false);
+    setUserSelectedTier(null);
     setFormData({ name: '', email: '', dietary: '' });
     onClose();
   };
@@ -61,26 +63,24 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-gallery-dark/60 backdrop-blur-sm transition-opacity" 
+        className="fixed inset-0 bg-black/60 transition-opacity" 
         onClick={handleResetAndClose} 
       />
 
       {/* Modal Card */}
-      <div className="relative bg-gallery-bg border border-gallery-sand rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden z-10 my-8">
+      <div className="relative bg-white border border-gray-300 rounded-lg w-full max-w-lg shadow-xl overflow-hidden z-10 my-8">
         
         {/* Header Bar */}
-        <div className="px-6 py-5 border-b border-gallery-sand flex items-center justify-between bg-white">
+        <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-gray-50">
           <div>
-            <span className="text-[10px] uppercase font-bold tracking-widest text-gallery-terracotta">
-              KWAG Benefit Gala 2026
-            </span>
-            <h3 className="font-serif text-xl font-bold text-gallery-dark">
-              {isSuccess ? 'Reservation Confirmed' : 'Reserve Gala Tickets'}
+            <h3 className="text-lg font-bold text-gray-900">
+              {isSuccess ? 'Reservation Received' : 'Reserve Gala Tickets'}
             </h3>
           </div>
           <button 
             onClick={handleResetAndClose}
-            className="p-1 rounded-full text-gallery-muted hover:text-gallery-dark hover:bg-gallery-sand/40 transition-colors"
+            className="p-1 rounded text-gray-400 hover:text-gray-900 hover:bg-gray-200 transition-colors"
+            aria-label="Close modal"
           >
             <X size={20} />
           </button>
@@ -88,55 +88,59 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
 
         {isSuccess ? (
           <div className="p-8 text-center space-y-4">
-            <div className="w-14 h-14 bg-gallery-celadon/20 text-gallery-terracotta rounded-full flex items-center justify-center mx-auto">
-              <CheckCircle size={32} />
+            <div className="w-14 h-14 bg-gray-100 text-gray-900 border border-gray-300 rounded-full flex items-center justify-center mx-auto">
+              <CheckCircle size={30} />
             </div>
-            <h4 className="font-serif text-2xl text-gallery-dark font-semibold">Thank You, {formData.name}!</h4>
-            <p className="text-sm text-gallery-muted leading-relaxed">
-              Your reservation for <strong className="text-gallery-dark">{guestCount} × {currentTierObj.name}</strong> has been received. A receipt and confirmation voucher have been sent to <span className="underline text-gallery-dark">{formData.email}</span>.
+            <h4 className="text-xl font-bold text-gray-900">Thank You, {formData.name || 'Gala Guest'}!</h4>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Your reservation for <strong className="text-gray-900">{guestCount} × {currentTierObj.name}</strong> has been recorded in the system. A confirmation placeholder and tax receipt note have been queued for <span className="text-gray-900 font-semibold">{formData.email}</span>.
             </p>
-            <div className="bg-white p-4 rounded-xl border border-gallery-sand text-left text-xs space-y-2 mt-4">
+            <div className="bg-gray-50 p-4 rounded border border-gray-200 text-left text-xs space-y-2 mt-4">
               <div className="flex justify-between">
-                <span className="text-gallery-muted">Event:</span>
-                <span className="font-medium text-gallery-dark">Conservation Gala: Earth & Fire</span>
+                <span className="text-gray-500">Event:</span>
+                <span className="font-medium text-gray-900">Ceramics Charity Gala</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gallery-muted">Date & Time:</span>
-                <span className="font-medium text-gallery-dark">Sat, Nov 14, 2026 • 6:30 PM</span>
+                <span className="text-gray-500">Date:</span>
+                <span className="font-medium text-gray-900">Saturday, Nov 14, 2026 • 6:30 PM</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gallery-muted">Location:</span>
-                <span className="font-medium text-gallery-dark">KWAG • 101 Queen St N</span>
+                <span className="text-gray-500">Location:</span>
+                <span className="font-medium text-gray-900">Catalyst Commons</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-500">Total:</span>
+                <span className="font-bold text-gray-900">${totalPrice} CAD</span>
               </div>
             </div>
             <button
               onClick={handleResetAndClose}
-              className="w-full mt-4 py-3 rounded-full bg-gallery-dark text-white font-medium text-sm hover:bg-gallery-terracotta transition-colors"
+              className="w-full mt-4 py-2.5 rounded bg-gray-900 text-white font-medium text-sm hover:bg-black transition-colors"
             >
-              Return to Exhibition
+              Return to Website
             </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="p-6 space-y-5">
             {/* Tier Select */}
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-gallery-muted mb-2">
-                Admission Tier
+              <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-2">
+                Select Admission Tier
               </label>
               <div className="grid grid-cols-3 gap-2">
                 {eventDetails.tiers.map((t) => (
                   <button
                     type="button"
                     key={t.id}
-                    onClick={() => setTier(t.id)}
-                    className={`py-2 px-2 rounded-lg text-xs font-medium border text-center transition-all ${
+                    onClick={() => setUserSelectedTier(t.id)}
+                    className={`p-2.5 rounded text-xs font-medium border text-center transition-all ${
                       tier === t.id
-                        ? 'border-gallery-terracotta bg-gallery-terracotta/10 text-gallery-terracotta font-semibold'
-                        : 'border-gallery-sand bg-white text-gallery-muted hover:border-gallery-dark'
+                        ? 'border-gray-900 bg-gray-900 text-white font-bold'
+                        : 'border-gray-200 bg-gray-50 text-gray-700 hover:border-gray-400'
                     }`}
                   >
-                    <div>{t.name.split(' ')[0]}</div>
-                    <div className="text-[11px] opacity-80">${t.price}</div>
+                    <div className="font-bold">{t.name.split(' ')[0]}</div>
+                    <div className="text-[11px] opacity-80">${t.price} CAD</div>
                   </button>
                 ))}
               </div>
@@ -144,19 +148,19 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
 
             {/* Guest Count */}
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-gallery-muted mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-2">
                 Number of Guests
               </label>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 {[1, 2, 4, 8].map((num) => (
                   <button
                     type="button"
                     key={num}
                     onClick={() => setGuestCount(num)}
-                    className={`flex-1 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+                    className={`flex-1 py-1.5 rounded text-xs font-medium border transition-all ${
                       guestCount === num
-                        ? 'border-gallery-dark bg-gallery-dark text-white'
-                        : 'border-gallery-sand bg-white text-gallery-dark hover:border-gallery-muted'
+                        ? 'border-gray-900 bg-gray-900 text-white font-bold'
+                        : 'border-gray-200 bg-gray-50 text-gray-700 hover:border-gray-400'
                     }`}
                   >
                     {num}
@@ -168,64 +172,66 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
             {/* Inputs */}
             <div className="space-y-3">
               <div>
-                <label className="block text-xs font-medium text-gallery-dark mb-1">Full Name</label>
+                <label className="block text-xs font-medium text-gray-700 mb-1">Full Name</label>
                 <div className="relative">
-                  <User size={16} className="absolute left-3 top-3 text-gallery-muted" />
+                  <User size={16} className="absolute left-3 top-2.5 text-gray-400" />
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g., Sarah Chen"
-                    className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-gallery-sand bg-white text-sm focus:outline-none focus:ring-1 focus:ring-gallery-terracotta"
+                    placeholder="Guest / Patron Name"
+                    className="w-full pl-9 pr-3 py-2 rounded border border-gray-300 bg-white text-sm focus:outline-none focus:border-gray-900"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gallery-dark mb-1">Email Address</label>
+                <label className="block text-xs font-medium text-gray-700 mb-1">Email Address</label>
                 <div className="relative">
-                  <Mail size={16} className="absolute left-3 top-3 text-gallery-muted" />
+                  <Mail size={16} className="absolute left-3 top-2.5 text-gray-400" />
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="sarah@example.com"
-                    className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-gallery-sand bg-white text-sm focus:outline-none focus:ring-1 focus:ring-gallery-terracotta"
+                    placeholder="name@example.com"
+                    className="w-full pl-9 pr-3 py-2 rounded border border-gray-300 bg-white text-sm focus:outline-none focus:border-gray-900"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gallery-dark mb-1">Dietary Notes / Accessibility Requests (Optional)</label>
+                <label className="block text-xs font-medium text-gray-700 mb-1">
+                  Dietary / Accessibility Notes (Optional)
+                </label>
                 <input
                   type="text"
                   value={formData.dietary}
                   onChange={(e) => setFormData({ ...formData, dietary: e.target.value })}
-                  placeholder="e.g., Gluten-free, wheelchair access"
-                  className="w-full px-4 py-2.5 rounded-xl border border-gallery-sand bg-white text-sm focus:outline-none focus:ring-1 focus:ring-gallery-terracotta"
+                  placeholder="e.g. Vegetarian, Wheelchair access"
+                  className="w-full px-3 py-2 rounded border border-gray-300 bg-white text-sm focus:outline-none focus:border-gray-900"
                 />
               </div>
             </div>
 
-            {/* Total breakdown */}
-            <div className="p-3.5 rounded-xl bg-gallery-sand/40 border border-gallery-sand flex justify-between items-center text-sm">
+            {/* Total summary */}
+            <div className="p-3.5 rounded bg-gray-50 border border-gray-200 flex justify-between items-center text-sm">
               <div>
-                <span className="font-semibold text-gallery-dark">{guestCount} × {currentTierObj.name}</span>
-                <p className="text-[11px] text-gallery-muted">Includes applicable charitable receipt</p>
+                <span className="font-semibold text-gray-900">{guestCount} × {currentTierObj.name}</span>
+                <p className="text-[11px] text-gray-500">Includes charitable donation receipt</p>
               </div>
-              <span className="font-serif text-xl font-bold text-gallery-dark">${totalPrice} CAD</span>
+              <span className="text-xl font-bold text-gray-900">${totalPrice} CAD</span>
             </div>
 
             {/* Submit */}
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 rounded-full bg-gallery-terracotta text-white font-medium text-sm hover:bg-[#b04a25] transition-all flex items-center justify-center gap-2 shadow-sm disabled:opacity-50"
+              className="w-full py-3 rounded bg-gray-900 text-white font-medium text-sm hover:bg-black transition-all flex items-center justify-center gap-2 shadow-xs disabled:opacity-50"
             >
               <ShieldCheck size={16} />
-              <span>{isSubmitting ? 'Confirming Reservation...' : `Confirm & Reserve ($${totalPrice} CAD)`}</span>
+              <span>{isSubmitting ? 'Processing...' : `Confirm Reservation ($${totalPrice} CAD)`}</span>
             </button>
           </form>
         )}

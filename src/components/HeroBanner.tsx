@@ -1,109 +1,116 @@
 import React from 'react';
-import { Calendar, MapPin, ArrowRight, Box } from 'lucide-react';
+import { Calendar, Clock, MapPin, Image as ImageIcon, Box } from 'lucide-react';
 import galaData from '../data/gala.json';
 
 interface HeroBannerProps {
-  onExploreArtisans: () => void;
   onOpenTickets: () => void;
+  onExplorePreview: () => void;
+  onGoToGallery: () => void;
 }
 
-export const HeroBanner: React.FC<HeroBannerProps> = ({ onExploreArtisans, onOpenTickets }) => {
+export const HeroBanner: React.FC<HeroBannerProps> = ({
+  onOpenTickets,
+  onExplorePreview,
+  onGoToGallery
+}) => {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gallery-bg">
-      {/* Subtle organic background decoration */}
-      <div 
-        aria-hidden="true" 
-        className="absolute top-12 right-0 -mr-24 w-96 h-96 rounded-full bg-gallery-sand/40 blur-3xl pointer-events-none" 
-      />
-      <div 
-        aria-hidden="true" 
-        className="absolute bottom-0 left-10 w-72 h-72 rounded-full bg-gallery-celadon/15 blur-2xl pointer-events-none" 
-      />
+    <section id="hero-event-details" className="pt-24 pb-16 md:pt-28 md:pb-20 border-b border-gray-300 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Column: Editorial Headline & Details */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          {/* Left Column: Headlines & Event Metadata */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gallery-sand/60 border border-gallery-sand text-xs font-semibold uppercase tracking-wider text-gallery-terracotta">
-              <span>{galaData.organization}</span>
-              <span className="w-1 h-1 rounded-full bg-gallery-muted" />
-              <span>Charity Benefit</span>
+
+            {/* Title / Subtitle Placeholders */}
+            <div className="space-y-3">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+                {galaData.title}
+              </h1>
+              <p className="text-lg sm:text-xl font-medium text-gray-700">
+                {galaData.subtitle}
+              </p>
             </div>
 
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-gallery-dark leading-[1.15] tracking-tight">
-              {galaData.title}: <br />
-              <span className="italic font-normal text-gallery-terracotta">
-                {galaData.subtitle}
-              </span>
-            </h1>
-
-            <p className="text-base sm:text-lg text-gallery-muted max-w-xl leading-relaxed">
+            {/* Summary */}
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-2xl">
               {galaData.summary}
             </p>
 
-            {/* Event Meta Badges */}
-            <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4 text-xs sm:text-sm text-gallery-dark font-medium border-y border-gallery-sand/80 py-4">
-              <div className="flex items-center gap-2">
-                <Calendar size={18} className="text-gallery-terracotta shrink-0" />
-                <span>{galaData.date}</span>
+            {/* Event Details Grid */}
+            <div className="p-4 sm:p-5 rounded-lg border border-gray-300 bg-gray-50 space-y-3">
+              <div className="text-[11px] uppercase tracking-wider text-gray-500 font-bold border-b border-gray-200 pb-2">
+                Event Info
               </div>
-              <div className="hidden sm:block text-gallery-sand">•</div>
-              <div className="flex items-center gap-2">
-                <MapPin size={18} className="text-gallery-terracotta shrink-0" />
-                <span>{galaData.location}</span>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                <div className="flex items-start gap-2.5">
+                  <Calendar size={18} className="text-gray-900 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="block text-[11px] text-gray-500">Date</span>
+                    <span className="font-semibold text-gray-900">{galaData.date}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2.5">
+                  <Clock size={18} className="text-gray-900 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="block text-[11px] text-gray-500">Time</span>
+                    <span className="font-semibold text-gray-900">{galaData.time}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2.5 sm:col-span-2">
+                  <MapPin size={18} className="text-gray-900 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="block text-[11px] text-gray-500">Venue & Location</span>
+                    <span className="font-semibold text-gray-900">{galaData.location}</span>
+                    <span className="block text-xs text-gray-500 mt-0.5">{galaData.venueRoom}</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* CTAs */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
+            {/* Action Buttons */}
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={onOpenTickets}
-                className="px-7 py-3.5 rounded-full bg-gallery-terracotta text-white font-medium text-sm sm:text-base hover:bg-[#b04a25] transition-all flex items-center gap-2 group shadow-sm hover:shadow-md"
+                className="px-6 py-3 rounded bg-gray-900 text-white text-xs uppercase font-bold tracking-wider hover:bg-black transition-colors flex items-center gap-2 border border-gray-900"
               >
                 <span>Reserve Tickets</span>
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
 
               <button
-                onClick={onExploreArtisans}
-                className="px-6 py-3.5 rounded-full bg-gallery-sand/50 text-gallery-dark font-medium text-sm sm:text-base hover:bg-gallery-sand transition-colors flex items-center gap-2 border border-gallery-sand"
+                onClick={onExplorePreview}
+                className="px-5 py-3 rounded bg-white text-gray-800 text-xs uppercase font-bold tracking-wider hover:bg-gray-100 transition-colors border border-gray-300 flex items-center gap-2"
               >
-                <Box size={16} className="text-gallery-muted" />
-                <span>Explore 3D Artifacts</span>
+                <Box size={15} />
+                <span>Preview 3D & 2D</span>
+              </button>
+
+              <button
+                onClick={onGoToGallery}
+                className="px-5 py-3 rounded bg-white text-gray-800 text-xs uppercase font-bold tracking-wider hover:bg-gray-100 transition-colors border border-gray-300"
+              >
+                <span>Full Gallery Page →</span>
               </button>
             </div>
           </div>
 
-          {/* Right Column: Hero Visual Framing */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              {/* Card Container simulating museum display plinth */}
-              <div className="relative rounded-2xl overflow-hidden bg-white p-4 shadow-xl border border-gallery-sand/70">
-                <div className="aspect-[4/5] rounded-xl bg-gallery-sand/30 overflow-hidden relative group">
-                  <img
-                    src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=1000&q=80"
-                    alt="Handcrafted ceramic earthenware pottery vessel"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  {/* Subtle 3D indicator pill overlay */}
-                  <div className="absolute top-4 right-4 bg-gallery-dark/80 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow">
-                    <Box size={14} className="text-gallery-celadon" />
-                    <span>Smithsonian 3D Scan Ready</span>
-                  </div>
+          {/* Right Column: Hero Visual Placeholder */}
+          <div className="lg:col-span-5">
+            <div className="border border-gray-300 rounded-lg p-3 bg-gray-50 shadow-xs">
+              <div className="aspect-[4/5] rounded border-2 border-dashed border-gray-300 wireframe-pattern flex flex-col items-center justify-center p-6 text-center text-gray-600 relative">
+                
+                {/* Visual Placeholder Indicator */}
+                <div className="w-16 h-16 rounded-full bg-white border border-gray-300 flex items-center justify-center mb-3 shadow-2xs">
+                  <ImageIcon size={30} className="text-gray-500" />
                 </div>
-
-                <div className="mt-4 px-2 pb-1 flex justify-between items-end">
-                  <div>
-                    <p className="text-xs uppercase tracking-wider text-gallery-muted font-medium">Featured Tradition</p>
-                    <h3 className="font-serif text-lg font-semibold text-gallery-dark">Zapotec Black Clay & Goryeo Celadon</h3>
-                  </div>
-                  <span className="text-xs font-medium text-gallery-terracotta">Interactive in Gallery ↓</span>
-                </div>
+                
+                <span className="text-xs text-gray-600 max-w-xs block mb-3">
+                  Ceramics Artifact
+                </span>
               </div>
 
-              {/* Decorative framing element */}
-              <div className="absolute -bottom-4 -left-4 -z-10 w-full h-full rounded-2xl border-2 border-gallery-sand/90" />
             </div>
           </div>
 
