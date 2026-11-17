@@ -14,7 +14,8 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
   onGoToGallery
 }) => {
   return (
-    <section id="hero-event-details" className="pt-24 pb-16 md:pt-28 md:pb-20 border-b border-gallery-border bg-gallery-bg">
+    <section id="home" className="pt-24 pb-16 md:pt-28 md:pb-20 border-b border-gallery-border bg-gallery-bg relative">
+      <span id="hero-event-details" className="sr-only" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -84,7 +85,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 className="px-5 py-3 rounded bg-gallery-card text-gallery-text text-xs uppercase font-bold tracking-wider hover:bg-gallery-border/30 transition-colors border border-gallery-border flex items-center gap-2"
               >
                 <Box size={15} />
-                <span>Preview 3D & 2D</span>
+                <span>Preview</span>
               </button>
 
               <button

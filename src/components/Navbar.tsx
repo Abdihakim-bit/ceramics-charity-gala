@@ -29,7 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         
         {/* Left: Official Brand Logo */}
         <button
-          onClick={() => handleLinkClick('main', 'hero-event-details')}
+          onClick={() => handleLinkClick('main', 'home')}
           className="flex items-center gap-2.5 text-left group focus:outline-none py-1"
           aria-label="Fórma Ceramics Charity Gala Home"
         >
@@ -43,12 +43,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Center: Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-gallery-text">
           <button
-            onClick={() => handleLinkClick('main', 'hero-event-details')}
+            onClick={() => handleLinkClick('main', 'home')}
             className={`hover:text-gallery-primary transition-colors ${
               currentPage === 'main' ? 'text-gallery-primary font-bold' : 'text-gallery-muted'
             }`}
           >
-            Event Details
+            Home
           </button>
           
           <button
@@ -156,10 +156,10 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div className="lg:hidden bg-gallery-bg border-b border-gallery-border px-6 py-5 space-y-3 text-sm">
           <button
-            onClick={() => handleLinkClick('main', 'hero-event-details')}
+            onClick={() => handleLinkClick('main', 'home')}
             className="block w-full text-left py-1.5 text-gallery-text hover:text-gallery-primary"
           >
-            Event Details
+            Home
           </button>
           <button
             onClick={() => handleLinkClick('main', 'schedule')}

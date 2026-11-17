@@ -122,7 +122,7 @@ export default function App() {
       <main className="flex-1">
         {currentPage === 'main' && (
           <>
-            {/* Hero Banner with Event Details */}
+            {/* Hero Banner / Home */}
             <HeroBanner
               onOpenTickets={() => handleOpenTickets('patron')}
               onExplorePreview={() => handleNavigate('main', 'ceramics-preview')}

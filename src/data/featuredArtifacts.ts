@@ -17,18 +17,18 @@ export interface ArtifactItem {
 
 // 3D model for the Ceramics Preview section
 export const preview3DModel: ArtifactItem = {
-  id: 'ritual-wine-container',
-  name: 'Ritual Wine Container (Fangyi) with Masks & Serpents',
-  type: '3d',
-  category: 'Historical',
-  artistOrCulture: 'Zhou Dynasty (China)',
-  period: 'Early Western Zhou dynasty (ca. 1100 BCE)',
-  medium: 'Cast Bronze & Ceremonial Vessel',
-  dimensions: '28.5 cm × 18.2 cm × 14.0 cm',
-  description: 'Features intricate taotie animal motifs rendered in multi-tier relief. Renowned for its interior 187-character cast inscription documenting ritual ceremonies and tribute offerings. Digitized by the Smithsonian 3D Collection.',
-  modelPath: '/models/ritual-wine-container.glb',
-  sourceUrl: 'https://3d.si.edu/object/3d/ritual-wine-container-fangyi-maskstaotie-serpents-and-birds:d8c62f94-4ebc-11ea-b77f-2e728ce88125'
-};
+    id: 'stoneware-jug',
+    name: 'Stoneware jug',
+    type: '3d',
+    category: 'Historical',
+    artistOrCulture: 'African American Potter Thomas Commeraw, American',
+    period: 'ca 1797 - 1819',
+    medium: 'Ceramic and Glaze',
+    dimensions: '38.7 cm × 24.8 cm × 24.8 cm x 80.3 cm',
+    description: 'An ovoid saltglaze stoneware jug with incised blue clamshell and bell flower decoration around the front shoulder over inscription. A loop handle extends from neck and is attached on side opposite from inscription, with blue glaze surrounding the attachment location. The jug is marked on side with maker’s name and location: COMMERAW.S / STONEWARE / N.YORK.',
+    modelPath: '/models/stoneware-jug.glb',
+    sourceUrl: 'https://3d.si.edu/object/3d/stoneware-jug-created-thomas-commeraw:82adf5d6-5ec4-46cc-9e68-6a4d7c5ea824'
+  };
 
 // 2D featured pieces for the Ceramics Preview section
 export const preview2DPlaceholders: ArtifactItem[] = [
@@ -66,30 +66,43 @@ export const preview2DPlaceholders: ArtifactItem[] = [
 export const gallery3DModels: ArtifactItem[] = [
   preview3DModel,
   {
-    id: 'ewer',
-    name: 'Delftware Ornamental Ewer with Chinoiserie Motifs',
+    id: 'incense-burner.glb',
+    name: 'Incense Burner',
     type: '3d',
-    category: 'Historical',
-    artistOrCulture: 'Delft (Netherlands)',
-    period: 'ca. 1686–1701',
-    medium: 'Tin-glazed Earthenware (Delftware)',
-    dimensions: '31.2 cm × 19.5 cm × 15.0 cm',
-    description: 'Straight-sided circular body with pointed spout, ornate handle, and domed foot. Painted in cobalt underglaze blue on white ground with dark trek outlines depicting figures and floral reserves.',
-    modelPath: '/models/ewer.glb',
-    sourceUrl: 'https://3d.si.edu/object/3d/ewer:349e8fa2-9461-4e33-bae9-5e9cdd3e72bb'
+    category: 'Vessels',
+    artistOrCulture: 'Qing dynasty, China',
+    period: 'late 17th century',
+    medium: 'Porcelain with cobalt pigment under clear glaze',
+    dimensions: '14.2 cm × 23.5 cm',
+    description: 'Incense burner; round with bulging sides, contracted neck and flaring rim; low foot, trimmed above the rim on the outside. Decorated in underglaze blue, continuous landscape around exterior, comprising of rocks, trees, water, figures, boats, and pavilions, executed primarily in outline and wash, the water in parallel horizontal lines in typical K\'ang-hsi manner; around the neck, a band of motifs comprising five of the Eight Precious Things, each alternating with a cloud scroll.',
+    modelPath: '/models/incense-burner.glb',
+    sourceUrl: 'https://3d.si.edu/object/3d/incense-burner:fbcc6998-41a8-41cf-af57-81a82098f3ca'
+  }, 
+  {
+    id: 'kylix',
+    name: 'Kylix',
+    type: '3d',
+    category: 'Vessels',
+    artistOrCulture: 'Greek',
+    period: 'ca. 800 BC',
+    medium: 'Painted earthenware',
+    dimensions: '7.3 cm × 22 cm × 18 cm',
+    description: 'An ancient Greek drinking cup with a broad, shallow body raised on a stem and foot, with two horizontal handles. Both the interior and exterior are decorated with red paint featuring geometric patterns and motifs.',
+    modelPath: '/models/kylix.glb',
+    sourceUrl: 'https://3d.si.edu/object/3d/kylix:547c78d1-620b-40c4-982e-01928870fef4'
   },
   {
-    id: 'catherine-vainglory',
-    name: 'Figurative Ceramic Study ("Catherine")',
+    id: 'Dish',
+    name: 'Dish with floral decoration',
     type: '3d',
-    category: 'Sculpture',
-    artistOrCulture: 'European Fine Ceramic Archive',
-    period: '18th–19th Century',
-    medium: 'Glazed Porcelain & Polychrome Enamel',
-    dimensions: '24.0 cm × 12.5 cm × 11.0 cm',
-    description: 'Sculptural porcelain figure showcasing classical figurative drapery and fine facial detailing, emblematic of courtly European decorative porcelain traditions.',
-    modelPath: '/models/catherine-vainglory.glb',
-    sourceUrl: 'https://3d.si.edu/explore'
+    category: 'Vessels',
+    artistOrCulture: 'Qing dynasty, China',
+    period: 'late 17th-early 18th century',
+    medium: 'Porcelain with cobalt pigment under clear glaze',
+    dimensions: '4.5 cm × 20.1 cm',
+    description: 'One of a pair of blue and white glazed plates. Shallow flat center, with thick rim and deep ring base. Stylized floral designs in dark blue glaze over blue-white glaze.',
+    modelPath: '/models/dish.glb',
+    sourceUrl: 'https://3d.si.edu/object/3d/dish-one-pair-f1992342:b4ac83ec-8ac6-4d95-8e8b-33c853ca4efa'
   }
 ];
 
