@@ -5,13 +5,13 @@
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-mono: monospace;
 
-  /* Official Fórma Brand Identity Palette                      */
-  --color-gallery-bg: #FEF8EA;        /* Main page background - Fórma Warm Cream / Off-White */
-  --color-gallery-card: #FFFFFF;      /* Card & panel surfaces */
-  --color-gallery-text: #645E56;      /* Headings & primary text - Fórma Charcoal Espresso text */
-  --color-gallery-muted: #827B73;     /* Captions, subtext, timestamps - Muted Charcoal / Warm Grey */
-  --color-gallery-border: #E3DACD;    /* Borders, dividers, card outlines - Fórma Warm Stone */
-  --color-gallery-primary: #C5855F;   /* Primary accent & CTA buttons - Fórma Terracotta / Rust accent */
+  /* Official Fórma Brand Identity Palette - Dark theme */
+  --color-gallery-bg: #645E56;        /* Main page background - Fórma Charcoal Espresso */
+  --color-gallery-card: #554F48;      /* Card & panel surfaces - Deep Warm Charcoal */
+  --color-gallery-text: #FEF8EA;      /* Headings & primary text - Fórma Warm Cream */
+  --color-gallery-muted: #D5CDC0;     /* Captions, subtext, timestamps - Soft Stone Cream */
+  --color-gallery-border: #777066;    /* Borders, dividers, card outlines - Subtle Muted Charcoal */
+  --color-gallery-primary: #C5855F;   /* Primary accent & CTA buttons - Fórma Terracotta / Rust */
   --color-gallery-secondary: #C0D1B9; /* Secondary badges & subtle tags - Fórma Sage Green */
 }
 

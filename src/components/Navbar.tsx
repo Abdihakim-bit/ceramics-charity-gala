@@ -26,7 +26,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenT
           aria-label="Fórma Ceramics Charity Gala Home"
         >
           <img
-            src="/Logo/horizontal/svg/Artboard 21.svg"
+            src="/Logo/horizontal/svg/Artboard 22.svg"
             alt="Fórma Ceramics Charity Gala"
             className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-opacity group-hover:opacity-85"
           />

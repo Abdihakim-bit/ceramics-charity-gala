@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-7 space-y-4">
             <div className="space-y-2">
               <img
-                src="/Logo/horizontal/svg/Artboard 21.svg"
+                src="/Logo/horizontal/svg/Artboard 22.svg"
                 alt="Fórma"
                 className="h-10 sm:h-12 w-auto object-contain"
               />
