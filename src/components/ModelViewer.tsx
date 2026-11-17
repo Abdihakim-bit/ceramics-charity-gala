@@ -4,13 +4,16 @@ import { OrbitControls, useGLTF, Center, Bounds, useBounds } from '@react-three/
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import { Loader2, RotateCcw } from 'lucide-react';
 
+// Configure local offline Draco WebAssembly decoder path
+useGLTF.setDecoderPath('/draco/');
+
 interface ModelProps {
   modelPath: string;
   onLoaded: () => void;
 }
 
 const CeramicMesh: React.FC<ModelProps> = ({ modelPath, onLoaded }) => {
-  const { scene } = useGLTF(modelPath);
+  const { scene } = useGLTF(modelPath, '/draco/');
 
   useEffect(() => {
     if (scene) {
