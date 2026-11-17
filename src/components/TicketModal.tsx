@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, CheckCircle, ShieldCheck, User, Mail } from 'lucide-react';
 import eventDetails from '../data/eventDetails.json';
+import galaData from '../data/gala.json';
 
 interface TicketModalProps {
   isOpen: boolean;
@@ -68,18 +69,18 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
       />
 
       {/* Modal Card */}
-      <div className="relative bg-white border border-gray-300 rounded-lg w-full max-w-lg shadow-xl overflow-hidden z-10 my-8">
+      <div className="relative bg-gallery-card border border-gallery-border rounded-lg w-full max-w-lg shadow-xl overflow-hidden z-10 my-8">
         
         {/* Header Bar */}
-        <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-gray-50">
+        <div className="px-6 py-4 border-b border-gallery-border flex items-center justify-between bg-gallery-bg">
           <div>
-            <h3 className="text-lg font-bold text-gray-900">
+            <h3 className="text-lg font-bold text-gallery-text">
               {isSuccess ? 'Reservation Received' : 'Reserve Gala Tickets'}
             </h3>
           </div>
           <button 
             onClick={handleResetAndClose}
-            className="p-1 rounded text-gray-400 hover:text-gray-900 hover:bg-gray-200 transition-colors"
+            className="p-1 rounded text-gallery-muted hover:text-gallery-text hover:bg-gallery-card transition-colors"
             aria-label="Close modal"
           >
             <X size={20} />
@@ -88,34 +89,34 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
 
         {isSuccess ? (
           <div className="p-8 text-center space-y-4">
-            <div className="w-14 h-14 bg-gray-100 text-gray-900 border border-gray-300 rounded-full flex items-center justify-center mx-auto">
+            <div className="w-14 h-14 bg-gallery-bg text-gallery-primary border border-gallery-border rounded-full flex items-center justify-center mx-auto">
               <CheckCircle size={30} />
             </div>
-            <h4 className="text-xl font-bold text-gray-900">Thank You, {formData.name || 'Gala Guest'}!</h4>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              Your reservation for <strong className="text-gray-900">{guestCount} × {currentTierObj.name}</strong> has been recorded in the system. A confirmation placeholder and tax receipt note have been queued for <span className="text-gray-900 font-semibold">{formData.email}</span>.
+            <h4 className="text-xl font-bold text-gallery-text">Thank You, {formData.name || 'Gala Guest'}!</h4>
+            <p className="text-sm text-gallery-muted leading-relaxed">
+              Your reservation for <strong className="text-gallery-text">{guestCount} × {currentTierObj.name}</strong> has been recorded in the system. A confirmation placeholder and tax receipt note have been queued for <span className="text-gallery-text font-semibold">{formData.email}</span>.
             </p>
-            <div className="bg-gray-50 p-4 rounded border border-gray-200 text-left text-xs space-y-2 mt-4">
+            <div className="bg-gallery-bg p-4 rounded border border-gallery-border text-left text-xs space-y-2 mt-4">
               <div className="flex justify-between">
-                <span className="text-gray-500">Event:</span>
-                <span className="font-medium text-gray-900">Ceramics Charity Gala</span>
+                <span className="text-gallery-muted">Event:</span>
+                <span className="font-medium text-gallery-text">{galaData.title} — {galaData.subtitle}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-500">Date:</span>
-                <span className="font-medium text-gray-900">Saturday, Nov 14, 2026 • 6:30 PM</span>
+                <span className="text-gallery-muted">Date:</span>
+                <span className="font-medium text-gallery-text">{galaData.date} • {galaData.time}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-500">Location:</span>
-                <span className="font-medium text-gray-900">Catalyst Commons</span>
+                <span className="text-gallery-muted">Location:</span>
+                <span className="font-medium text-gallery-text">Catalyst Commons</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-500">Total:</span>
-                <span className="font-bold text-gray-900">${totalPrice} CAD</span>
+                <span className="text-gallery-muted">Total:</span>
+                <span className="font-bold text-gallery-text">${totalPrice} CAD</span>
               </div>
             </div>
             <button
               onClick={handleResetAndClose}
-              className="w-full mt-4 py-2.5 rounded bg-gray-900 text-white font-medium text-sm hover:bg-black transition-colors"
+              className="w-full mt-4 py-2.5 rounded bg-gallery-primary text-white font-medium text-sm hover:opacity-90 transition-opacity"
             >
               Return to Website
             </button>
@@ -124,7 +125,7 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
           <form onSubmit={handleSubmit} className="p-6 space-y-5">
             {/* Tier Select */}
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-gallery-muted mb-2">
                 Select Admission Tier
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -135,8 +136,8 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
                     onClick={() => setUserSelectedTier(t.id)}
                     className={`p-2.5 rounded text-xs font-medium border text-center transition-all ${
                       tier === t.id
-                        ? 'border-gray-900 bg-gray-900 text-white font-bold'
-                        : 'border-gray-200 bg-gray-50 text-gray-700 hover:border-gray-400'
+                        ? 'border-gallery-primary bg-gallery-primary text-white font-bold'
+                        : 'border-gallery-border bg-gallery-bg text-gallery-text hover:border-gallery-primary'
                     }`}
                   >
                     <div className="font-bold">{t.name.split(' ')[0]}</div>
@@ -148,7 +149,7 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
 
             {/* Guest Count */}
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-gallery-muted mb-2">
                 Number of Guests
               </label>
               <div className="flex items-center gap-2">
@@ -159,8 +160,8 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
                     onClick={() => setGuestCount(num)}
                     className={`flex-1 py-1.5 rounded text-xs font-medium border transition-all ${
                       guestCount === num
-                        ? 'border-gray-900 bg-gray-900 text-white font-bold'
-                        : 'border-gray-200 bg-gray-50 text-gray-700 hover:border-gray-400'
+                        ? 'border-gallery-primary bg-gallery-primary text-white font-bold'
+                        : 'border-gallery-border bg-gallery-bg text-gallery-text hover:border-gallery-primary'
                     }`}
                   >
                     {num}
@@ -172,37 +173,37 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
             {/* Inputs */}
             <div className="space-y-3">
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Full Name</label>
+                <label className="block text-xs font-medium text-gallery-text mb-1">Full Name</label>
                 <div className="relative">
-                  <User size={16} className="absolute left-3 top-2.5 text-gray-400" />
+                  <User size={16} className="absolute left-3 top-2.5 text-gallery-muted" />
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Guest / Patron Name"
-                    className="w-full pl-9 pr-3 py-2 rounded border border-gray-300 bg-white text-sm focus:outline-none focus:border-gray-900"
+                    className="w-full pl-9 pr-3 py-2 rounded border border-gallery-border bg-gallery-bg text-gallery-text text-sm focus:outline-none focus:border-gallery-primary"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Email Address</label>
+                <label className="block text-xs font-medium text-gallery-text mb-1">Email Address</label>
                 <div className="relative">
-                  <Mail size={16} className="absolute left-3 top-2.5 text-gray-400" />
+                  <Mail size={16} className="absolute left-3 top-2.5 text-gallery-muted" />
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@example.com"
-                    className="w-full pl-9 pr-3 py-2 rounded border border-gray-300 bg-white text-sm focus:outline-none focus:border-gray-900"
+                    className="w-full pl-9 pr-3 py-2 rounded border border-gallery-border bg-gallery-bg text-gallery-text text-sm focus:outline-none focus:border-gallery-primary"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">
+                <label className="block text-xs font-medium text-gallery-text mb-1">
                   Dietary / Accessibility Notes (Optional)
                 </label>
                 <input
@@ -210,25 +211,25 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
                   value={formData.dietary}
                   onChange={(e) => setFormData({ ...formData, dietary: e.target.value })}
                   placeholder="e.g. Vegetarian, Wheelchair access"
-                  className="w-full px-3 py-2 rounded border border-gray-300 bg-white text-sm focus:outline-none focus:border-gray-900"
+                  className="w-full px-3 py-2 rounded border border-gallery-border bg-gallery-bg text-gallery-text text-sm focus:outline-none focus:border-gallery-primary"
                 />
               </div>
             </div>
 
             {/* Total summary */}
-            <div className="p-3.5 rounded bg-gray-50 border border-gray-200 flex justify-between items-center text-sm">
+            <div className="p-3.5 rounded bg-gallery-bg border border-gallery-border flex justify-between items-center text-sm">
               <div>
-                <span className="font-semibold text-gray-900">{guestCount} × {currentTierObj.name}</span>
-                <p className="text-[11px] text-gray-500">Includes charitable donation receipt</p>
+                <span className="font-semibold text-gallery-text">{guestCount} × {currentTierObj.name}</span>
+                <p className="text-[11px] text-gallery-muted">Includes charitable donation receipt</p>
               </div>
-              <span className="text-xl font-bold text-gray-900">${totalPrice} CAD</span>
+              <span className="text-xl font-bold text-gallery-text">${totalPrice} CAD</span>
             </div>
 
             {/* Submit */}
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 rounded bg-gray-900 text-white font-medium text-sm hover:bg-black transition-all flex items-center justify-center gap-2 shadow-xs disabled:opacity-50"
+              className="w-full py-3 rounded bg-gallery-primary text-white font-medium text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-xs disabled:opacity-50"
             >
               <ShieldCheck size={16} />
               <span>{isSubmitting ? 'Processing...' : `Confirm Reservation ($${totalPrice} CAD)`}</span>

@@ -62,9 +62,9 @@ const FramerAndReset: React.FC<FramerProps> = ({ modelPath, resetCount, controls
 };
 
 const CanvasLoader = () => (
-  <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-500 z-10 pointer-events-none bg-white/80">
-    <Loader2 className="w-8 h-8 animate-spin text-gray-900 mb-2" />
-    <span className="text-xs uppercase tracking-widest text-gray-700 font-bold">Loading 3D Model...</span>
+  <div className="absolute inset-0 flex flex-col items-center justify-center text-gallery-muted z-10 pointer-events-none bg-gallery-bg/80">
+    <Loader2 className="w-8 h-8 animate-spin text-gallery-primary mb-2" />
+    <span className="text-xs uppercase tracking-widest text-gallery-text font-bold">Loading 3D Model...</span>
   </div>
 );
 
@@ -109,7 +109,7 @@ const ModelViewerComponent: React.FC<ModelViewerProps> = ({ modelPath }) => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full min-h-[420px] bg-gray-100 rounded-lg overflow-hidden border border-gray-300 select-none"
+      className="relative w-full h-full min-h-[420px] bg-gallery-bg rounded-lg overflow-hidden border border-gallery-border select-none"
     >
       {/* Loading state indicator */}
       {!isRendered && <CanvasLoader />}
@@ -182,7 +182,7 @@ const ModelViewerComponent: React.FC<ModelViewerProps> = ({ modelPath }) => {
         <div className="absolute top-3 right-3 z-10">
           <button
             onClick={handleReset}
-            className="px-2.5 py-1 rounded text-xs font-bold bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 transition-colors shadow-2xs flex items-center gap-1.5"
+            className="px-2.5 py-1 rounded text-xs font-bold bg-gallery-card text-gallery-text border border-gallery-border hover:bg-gallery-bg transition-colors shadow-2xs flex items-center gap-1.5"
             title="Reset to default camera orientation"
             aria-label="Reset orientation"
           >
@@ -194,9 +194,9 @@ const ModelViewerComponent: React.FC<ModelViewerProps> = ({ modelPath }) => {
 
       {/* UI Interaction Cue */}
       {isRendered && (
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 pointer-events-none bg-gray-900/85 px-3.5 py-1 rounded text-white text-[11px] font-bold flex items-center gap-2 shadow-xs">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 pointer-events-none bg-gallery-text/90 px-3.5 py-1 rounded text-gallery-bg text-[11px] font-bold flex items-center gap-2 shadow-xs">
           <span>Click & Drag to Orbit 360°</span>
-          <span className="text-gray-400">•</span>
+          <span className="opacity-60">•</span>
           <span>Scroll to Zoom</span>
         </div>
       )}

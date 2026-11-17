@@ -91,7 +91,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 flex flex-col font-sans selection:bg-gray-900 selection:text-white">
+    <div className="min-h-screen bg-gallery-bg text-gallery-text flex flex-col font-sans selection:bg-gallery-primary selection:text-white">
       
       {/* Global Navigation Bar */}
       <Navbar

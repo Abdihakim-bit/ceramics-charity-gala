@@ -1,34 +1,94 @@
 {
   "schedule": [
     {
+      "id": "reception",
       "time": "6:30 PM",
-      "title": "Welcome Reception & Preview",
-      "location": "CEC Coworking Space",
-      "description": "Guest arrivals, signature beverages, artisanal pairings, and private viewing of the charity ceramic showcase."
+      "endTime": "7:30 PM",
+      "duration": "60 min",
+      "category": "Reception",
+      "title": "Welcome Reception",
+      "location": "Catalyst Commons • CEC Coworking Space",
+      "speaker": "Gala Committee",
+      "description": "Guest arrival and socializing before the main event.",
+      "highlights": [
+        "Private walk-through of the museum-grade ceramics showcase",
+        "Welcome registration & champagne reception",
+        "Early access to silent bidding and exhibition catalog"
+      ],
+      "dtStart": "20261128T183000",
+      "dtEnd": "20261128T193000"
     },
     {
+      "id": "keynote",
       "time": "7:30 PM",
-      "title": "Opening Address & Curatorial Keynote",
-      "location": "CEC Coworking Space",
-      "description": "Keynote presentation on safeguarding indigenous ceramic methods, high-fire kilns, and global conservation initiatives."
+      "endTime": "8:30 PM",
+      "duration": "60 min",
+      "category": "Keynote Address",
+      "title": "Opening Address and Keynote",
+      "location": "Main Stage • CEC Coworking Space",
+      "speaker": "Chief Curator & Guest Art Historian",
+      "description": "Keynote presentation on safeguarding indigenous ceramic methods and high-fire kiln traditions.",
+      "highlights": [
+        "Keynote: 'Preserving Millennia of High-Fire Kiln Traditions'",
+        "Announcement of the 2027 Fully-Funded Ceramic Fellowships",
+        "Showcase of 3D photogrammetry technology in pottery conservation"
+      ],
+      "dtStart": "20261128T193000",
+      "dtEnd": "20261128T203000"
     },
     {
+      "id": "masterclass",
       "time": "8:30 PM",
+      "endTime": "9:30 PM",
+      "duration": "60 min",
+      "category": "Live Masterclass",
       "title": "Live Masterclass Ceramic Demonstration",
-      "location": "CEC Coworking Space",
-      "description": "Live wheel-throwing, decorative carving, and traditional Kintsugi lacquer repair demonstrated by guest resident artisans."
+      "location": "Studio Arena • CEC Coworking Space",
+      "speaker": "Master Potter & Kintsugi Conservator",
+      "description": "Live wheel-throwing, decorative taotie relief carving, and traditional Kintsugi urushi lacquer repair demonstrated by guest resident artisans.",
+      "highlights": [
+        "Precision wheel-throwing of large-format stoneware vessels",
+        "Surface relief carving inspired by ancient Zhou dynasty motifs",
+        "Live 24k gold powder Kintsugi restoration demonstration"
+      ],
+      "dtStart": "20261128T203000",
+      "dtEnd": "20261128T213000"
     },
     {
+      "id": "auction",
       "time": "9:30 PM",
+      "endTime": "10:30 PM",
+      "duration": "60 min",
+      "category": "Benefit Auction",
       "title": "Charity Auction & Conservation Fundraiser",
-      "location": "CEC Coworking Space",
-      "description": "Live auction of premier 3D-scanned archival replicas and donated contemporary works supporting the 2027 Residency Fund."
+      "location": "Main Stage • CEC Coworking Space",
+      "speaker": "Auctioneer & Resident Artists",
+      "description": "Live benefit auction of curated original ceramic artworks and archival replicas, with 100% of proceeds supporting community fellowships.",
+      "highlights": [
+        "Live bidding on museum-caliber contemporary and historical ceramics",
+        "Instant charitable tax receipt generation for winning bids",
+        "Artist-led introductions detailing each work's creation process"
+      ],
+      "dtStart": "20261128T213000",
+      "dtEnd": "20261128T223000"
     },
     {
+      "id": "closing",
       "time": "10:30 PM",
+      "endTime": "11:00 PM",
+      "duration": "30 min",
+      "category": "Reception & Toast",
       "title": "Closing Toast & Private Collection Access",
-      "location": "CEC Coworking Space",
-      "description": "Closing remarks, patron acknowledgments, winning bidder registrations, and dessert reception."
+      "location": "Patron Lounge • CEC Coworking Space",
+      "speaker": "Guild Leadership & Benefactor Hosts",
+      "description": "Closing remarks, patron acknowledgments, artwork allocation documentation, and an evening dessert reception with the artists.",
+      "highlights": [
+        "Closing toast and gratitude address to supporters and benefactors",
+        "Winning collector registration and authenticity certification",
+        "Dessert reception and informal Q&A with master potters"
+      ],
+      "dtStart": "20261128T223000",
+      "dtEnd": "20261128T230000"
     }
   ],
   "tiers": [

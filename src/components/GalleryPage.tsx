@@ -22,62 +22,51 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
   );
 
   return (
-    <div className="pt-24 pb-20 bg-white min-h-screen">
+    <div className="pt-24 pb-20 bg-gallery-bg min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Top Breadcrumb & Page Tag */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-gray-300">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-gallery-border">
           <button
             onClick={onBackToMain}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-700 hover:text-black uppercase tracking-wider"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-gallery-muted hover:text-gallery-primary uppercase tracking-wider transition-colors cursor-pointer"
           >
             <ArrowLeft size={14} />
-            <span>← Back to Main Page</span>
+            <span>Back to Main Page</span>
           </button>
-
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-400">
-              Complete Archive
-            </span>
-          </div>
         </div>
 
         {/* Gallery Title & Context */}
         <div className="max-w-3xl mb-12 space-y-2">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-gallery-text tracking-tight">
             Gala Ceramic Archive & Exhibition Gallery
           </h1>
-          <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+          <p className="text-sm sm:text-base text-gallery-muted leading-relaxed">
             The full collection of ceramics featured for the charity benefit. Browse digitized 3D museum specimens with full 360° inspection, alongside curated 2D studio pottery and historical ceramics.
           </p>
         </div>
 
-        {/* ======================================================== */}
-        {/* 1. 3D Model Conservation Lab & Interactive Selector */}
-        {/* ======================================================== */}
+        {/* 3D Models */}
         <div className="mb-16">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <span className="p-1 rounded bg-gray-900 text-white">
+              <span className="p-1 rounded bg-gallery-primary text-white">
                 <Box size={14} />
               </span>
-              <h2 className="text-xs sm:text-sm uppercase font-bold text-gray-900">
+              <h2 className="text-xs sm:text-sm uppercase font-bold text-gallery-text">
                 3D ARTIFACT INSPECTOR
               </h2>
             </div>
-            <span className="text-xs text-gray-500">
-              Select model below to inspect
-            </span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-gray-50 border border-gray-300 rounded-lg p-6 lg:p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-gallery-card border border-gallery-border rounded-lg p-6 lg:p-8 shadow-2xs">
             
             {/* Left: Model Selector & Provenance */}
             <div className="lg:col-span-5 space-y-5">
               
               {/* Model Tabs */}
               <div>
-                <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-bold mb-2">
+                <label className="block text-[11px] uppercase tracking-wider text-gallery-muted font-bold mb-2">
                   Select 3D Model:
                 </label>
                 <div className="space-y-2">
@@ -89,22 +78,18 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
                         onClick={() => setSelected3D(model)}
                         className={`w-full text-left p-3 rounded border text-xs transition-all flex items-center justify-between ${
                           isSelected
-                            ? 'bg-gray-900 text-white border-gray-900 shadow-xs'
-                            : 'bg-white text-gray-800 border-gray-300 hover:border-gray-500'
+                            ? 'bg-gallery-primary text-white border-gallery-primary shadow-xs'
+                            : 'bg-gallery-bg text-gallery-text border-gallery-border hover:border-gallery-primary'
                         }`}
                       >
                         <div>
                           <div className={`text-[10px] uppercase font-bold ${
-                            isSelected ? 'text-gray-300' : 'text-gray-500'
+                            isSelected ? 'text-white/80' : 'text-gallery-muted'
                           }`}>
                             {model.artistOrCulture}
                           </div>
                           <div className="font-bold mt-0.5 line-clamp-1">{model.name}</div>
                         </div>
-                        <span className={`text-[11px] font-bold ${
-                          isSelected ? 'text-gray-300' : 'text-gray-400'
-                        }`}>
-                        </span>
                       </button>
                     );
                   })}
@@ -112,51 +97,51 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
               </div>
 
               {/* Provenance Card for selected model */}
-              <div className="bg-white p-5 rounded border border-gray-300 space-y-4">
-                <div className="border-b border-gray-200 pb-2">
-                  <span className="text-xs uppercase font-bold text-gray-700">
+              <div className="bg-gallery-bg p-5 rounded border border-gallery-border space-y-4">
+                <div className="border-b border-gallery-border pb-2">
+                  <span className="text-xs uppercase font-bold text-gallery-text">
                     Details
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-base font-bold text-gray-900">{selected3D.name}</h3>
-                  <p className="text-xs text-gray-500 mt-0.5">{selected3D.period}</p>
+                  <h3 className="text-base font-bold text-gallery-text">{selected3D.name}</h3>
+                  <p className="text-xs text-gallery-muted mt-0.5">{selected3D.period}</p>
                 </div>
 
-                <div className="space-y-1.5 text-xs border-t border-gray-200 pt-3">
+                <div className="space-y-1.5 text-xs border-t border-gallery-border pt-3">
                   <div className="flex justify-between">
-                    <span className="text-gray-500">Medium:</span>
-                    <span className="text-gray-900 text-right">{selected3D.medium}</span>
+                    <span className="text-gallery-muted">Medium:</span>
+                    <span className="text-gallery-text text-right font-medium">{selected3D.medium}</span>
                   </div>
                   {selected3D.dimensions && (
                     <div className="flex justify-between">
-                      <span className="text-gray-500">Dimensions:</span>
-                      <span className="text-gray-900">{selected3D.dimensions}</span>
+                      <span className="text-gallery-muted">Dimensions:</span>
+                      <span className="text-gallery-text font-medium">{selected3D.dimensions}</span>
                     </div>
                   )}
                   <div className="flex justify-between">
-                    <span className="text-gray-500">Category:</span>
-                    <span className="text-gray-900">{selected3D.category}</span>
+                    <span className="text-gallery-muted">Category:</span>
+                    <span className="text-gallery-text font-medium">{selected3D.category}</span>
                   </div>
                 </div>
 
                 <div>
-                  <span className="text-[11px] uppercase tracking-wider text-gray-500 font-bold block mb-1">
+                  <span className="text-[11px] uppercase tracking-wider text-gallery-muted font-bold block mb-1">
                     Conservation Description:
                   </span>
-                  <p className="text-xs text-gray-600 leading-relaxed">
+                  <p className="text-xs text-gallery-muted leading-relaxed">
                     {selected3D.description}
                   </p>
                 </div>
 
                 {selected3D.sourceUrl && (
-                  <div className="pt-2 border-t border-gray-200 flex items-center text-xs">
+                  <div className="pt-2 border-t border-gallery-border flex items-center text-xs">
                     <a
                       href={selected3D.sourceUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 text-gray-900 hover:underline"
+                      className="inline-flex items-center gap-1 text-gallery-primary hover:underline font-medium"
                     >
                       <span>Smithsonian Digital Record</span>
                       <ExternalLink size={12} />
@@ -182,14 +167,14 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <div className="flex items-center gap-2">
-                <span className="p-1 rounded bg-gray-200 text-gray-800">
+                <span className="p-1 rounded bg-gallery-secondary/40 text-gallery-text">
                   <ImageIcon size={14} />
                 </span>
-                <h2 className="text-xs sm:text-sm uppercase font-bold text-gray-900">
+                <h2 className="text-xs sm:text-sm uppercase font-bold text-gallery-text">
                   AUCTION CATALOG
                 </h2>
               </div>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-gallery-muted mt-1">
                 Curated 2D artworks for the gala charity auction.
               </p>
             </div>
@@ -201,7 +186,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search ceramics by name..."
-                className="w-full px-3 py-1.5 rounded border border-gray-300 bg-gray-50 text-xs focus:outline-none focus:border-gray-900 focus:bg-white"
+                className="w-full px-3 py-1.5 rounded border border-gallery-border bg-gallery-card text-gallery-text text-xs focus:outline-none focus:border-gallery-primary"
               />
             </div>
           </div>
@@ -211,52 +196,60 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
             {filtered2D.map((item) => (
               <div
                 key={item.id}
-                className="bg-white border border-gray-300 rounded-lg p-5 flex flex-col justify-between hover:border-gray-900 transition-colors shadow-2xs group"
+                className="bg-gallery-card border border-gallery-border rounded-lg p-5 flex flex-col justify-between hover:border-gallery-primary transition-colors shadow-2xs group"
               >
                 <div>
-                  {/* Placeholder Visual */}
-                  <div className="aspect-[4/3] wireframe-pattern border-2 border-dashed border-gray-300 rounded flex flex-col items-center justify-center p-4 text-center text-gray-500 mb-4 relative">
-                    <ImageIcon size={30} className="text-gray-400 mb-2 group-hover:scale-105 transition-transform" />
-                    <span className="text-xs uppercase font-bold text-gray-700 block mb-0.5">
-                      IMAGE PLACEHOLDER
-                    </span>
-                    <span className="text-[11px] text-gray-600 line-clamp-2 max-w-xs">
-                      {item.imagePlaceholderLabel}
-                    </span>
+                  {/* 2D Ceramic Photography */}
+                  <div className="aspect-[4/3] border border-gallery-border rounded overflow-hidden mb-4 relative bg-gallery-bg shadow-2xs cursor-pointer" onClick={() => onSelectArtifact(item)}>
+                    {item.imageUrl ? (
+                      <img
+                        src={item.imageUrl}
+                        alt={item.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gallery-bg flex flex-col items-center justify-center p-4 text-center text-gallery-muted">
+                        <ImageIcon size={30} className="text-gallery-muted mb-2" />
+                        <span className="text-xs uppercase font-bold text-gallery-text block mb-0.5">
+                          {item.name}
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Metadata */}
                   <div className="space-y-1 mb-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] uppercase text-gray-500">
+                      <span className="text-[10px] uppercase text-gallery-muted">
                         {item.artistOrCulture}
                       </span>
                       {item.estimatedValue && (
-                        <span className="text-xs font-bold text-gray-900">
+                        <span className="text-xs font-bold text-gallery-text">
                           {item.estimatedValue}
                         </span>
                       )}
                     </div>
-                    <h3 className="text-sm font-bold text-gray-900 line-clamp-1">
+                    <h3 className="text-sm font-bold text-gallery-text line-clamp-1">
                       {item.name}
                     </h3>
-                    <p className="text-[11px] text-gray-500">
+                    <p className="text-[11px] text-gallery-muted">
                       {item.medium}
                     </p>
                   </div>
 
-                  <p className="text-xs text-gray-600 line-clamp-3 mb-4 leading-relaxed">
+                  <p className="text-xs text-gallery-muted line-clamp-3 mb-4 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-gray-200 flex items-center justify-between">
-                  <span className="text-[11px] text-gray-400">
+                <div className="pt-3 border-t border-gallery-border flex items-center justify-between">
+                  <span className="text-[11px] text-gallery-muted">
                     {item.dimensions || 'Standard Size'}
                   </span>
                   <button
                     onClick={() => onSelectArtifact(item)}
-                    className="text-xs font-bold text-gray-900 hover:underline flex items-center gap-1"
+                    className="text-xs font-bold text-gallery-primary hover:underline flex items-center gap-1"
                   >
                     <span>View Specs</span>
                     <ArrowRight size={12} />
@@ -267,19 +260,19 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
           </div>
 
           {filtered2D.length === 0 && (
-            <div className="text-center py-12 border border-dashed border-gray-300 rounded text-xs text-gray-500">
+            <div className="text-center py-12 border border-dashed border-gallery-border rounded text-xs text-gallery-muted">
               No ceramic pieces found matching your search.
             </div>
           )}
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-16 p-6 sm:p-8 bg-gray-50 border border-gray-300 rounded-lg flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-16 p-6 sm:p-8 bg-gallery-card border border-gallery-border rounded-lg flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xs">
           <div className="space-y-1 text-center sm:text-left">
-            <h3 className="text-lg font-bold text-gray-900">
+            <h3 className="text-lg font-bold text-gallery-text">
               Support The Canadian Clay and Glass Gallery
             </h3>
-            <p className="text-xs sm:text-sm text-gray-600">
+            <p className="text-xs sm:text-sm text-gallery-muted">
               Bid on these pieces at the Gala Benefit Auction on Saturday, November 28, 2026.
             </p>
           </div>
@@ -287,13 +280,13 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
           <div className="flex flex-wrap gap-3">
             <button
               onClick={onBackToMain}
-              className="px-4 py-2.5 rounded bg-white border border-gray-300 text-gray-900 text-xs font-bold uppercase hover:bg-gray-100 transition-colors"
+              className="px-4 py-2.5 rounded bg-gallery-bg border border-gallery-border text-gallery-text text-xs font-bold uppercase hover:bg-gallery-card transition-colors"
             >
               ← Main Page
             </button>
             <button
               onClick={onOpenTickets}
-              className="px-5 py-2.5 rounded bg-gray-900 border border-gray-900 text-white text-xs font-bold uppercase hover:bg-black transition-colors"
+              className="px-5 py-2.5 rounded bg-gallery-primary border border-gallery-primary text-white text-xs font-bold uppercase hover:opacity-90 transition-opacity"
             >
               Reserve Gala Tickets
             </button>
