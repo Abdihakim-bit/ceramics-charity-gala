@@ -111,10 +111,10 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                     Featured Masterpiece
                   </span>
                   <h2 className="text-base sm:text-lg font-bold text-white leading-tight font-serif">
-                    Sculptural Stoneware Vessel
+                    Artisanal Folk Earthenware Pitchers
                   </h2>
                   <p className="text-xs text-white/80 mt-1 line-clamp-2">
-                    Handcrafted ceramic study honoring artisanal heritage across the Americas, Africa & Asia.
+                    Wheel-thrown terracotta pitchers featuring hand-carved slip motifs and honey-amber glaze, honoring regional craft traditions across the Americas, Africa & Asia.
                   </p>
                 </div>
               </div>
