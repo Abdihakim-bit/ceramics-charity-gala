@@ -5,14 +5,26 @@
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-mono: monospace;
 
-  /* Official Fórma Brand Identity Palette - Dark theme */
-  --color-gallery-bg: #645E56;        /* Main page background - Fórma Charcoal Espresso */
-  --color-gallery-card: #554F48;      /* Card & panel surfaces - Deep Warm Charcoal */
-  --color-gallery-text: #FEF8EA;      /* Headings & primary text - Fórma Warm Cream */
-  --color-gallery-muted: #D5CDC0;     /* Captions, subtext, timestamps - Soft Stone Cream */
-  --color-gallery-border: #777066;    /* Borders, dividers, card outlines - Subtle Muted Charcoal */
-  --color-gallery-primary: #C5855F;   /* Primary accent & CTA buttons - Fórma Terracotta / Rust */
-  --color-gallery-secondary: #C0D1B9; /* Secondary badges & subtle tags - Fórma Sage Green */
+  /* Official Fórma Brand Identity Palette (Day / Light Gallery Mode) */
+  --color-gallery-bg: #FEF8EA;        /* Main page background - Warm Cream / Off-White */
+  --color-gallery-card: #FFFFFF;      /* Card & panel surfaces - Pure White Surface */
+  --color-gallery-text: #645E56;      /* Headings & primary text - Charcoal Espresso Text */
+  --color-gallery-muted: #827B73;     /* Captions, subtext, timestamps - Muted Slate Charcoal */
+  --color-gallery-border: #E3DACD;    /* Borders, dividers, card outlines - Warm Stone Border */
+  --color-gallery-primary: #C5855F;   /* Primary accent & CTA buttons - Terracotta / Rust */
+  --color-gallery-secondary: #C0D1B9; /* Secondary badges & subtle tags - Sage Green */
+}
+
+/* Inverted Fórma Palette (Night / Dark Gala Mode) */
+:root[data-theme="dark"],
+[data-theme="dark"] {
+  --color-gallery-bg: #645E56;        /* Main page background - Charcoal Espresso canvas */
+  --color-gallery-card: #554F48;      /* Card & panel surfaces - Deep Warm Charcoal card surfaces */
+  --color-gallery-text: #FEF8EA;      /* Headings & primary text - Warm Cream text */
+  --color-gallery-muted: #D5CDC0;     /* Captions, subtext, timestamps - Soft Stone Cream subtext */
+  --color-gallery-border: #777066;    /* Borders, dividers, card outlines - Subtle Muted Charcoal border */
+  --color-gallery-primary: #C5855F;   /* Primary accent & CTA buttons - Terracotta / Rust */
+  --color-gallery-secondary: #C0D1B9; /* Secondary badges & subtle tags - Sage Green */
 }
 
 *, *::before, *::after {
@@ -29,6 +41,7 @@ body {
   color: var(--color-gallery-text);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  transition: background-color 200ms ease, color 200ms ease;
 }
 
 h1, h2, h3 {

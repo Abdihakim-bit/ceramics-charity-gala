@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
 interface NavbarProps {
   currentPage: 'main' | 'gallery' | 'contact';
   onNavigate: (page: 'main' | 'gallery' | 'contact', targetSectionId?: string) => void;
   onOpenTickets: () => void;
+  theme: 'light' | 'dark';
+  onToggleTheme: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenTickets }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  currentPage,
+  onNavigate,
+  onOpenTickets,
+  theme,
+  onToggleTheme
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleLinkClick = (page: 'main' | 'gallery' | 'contact', sectionId?: string) => {
@@ -16,7 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenT
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-gallery-bg/95 backdrop-blur-xs border-b border-gallery-border">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-gallery-bg/95 backdrop-blur-xs border-b border-gallery-border transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between">
         
         {/* Left: Official Brand Logo */}
@@ -26,7 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenT
           aria-label="Fórma Ceramics Charity Gala Home"
         >
           <img
-            src="/Logo/horizontal/svg/Artboard 22.svg"
+            src={theme === 'dark' ? '/Logo/horizontal/svg/Artboard 22.svg' : '/Logo/horizontal/svg/Artboard 21.svg'}
             alt="Fórma Ceramics Charity Gala"
             className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-opacity group-hover:opacity-85"
           />
@@ -85,8 +93,27 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenT
           </button>
         </nav>
 
-        {/* Right: Reserve Button */}
+        {/* Right: Theme Switcher & Reserve Button */}
         <div className="hidden sm:flex items-center gap-3">
+          <button
+            onClick={onToggleTheme}
+            className="px-3 py-1.5 rounded border border-gallery-border bg-gallery-card text-gallery-text hover:border-gallery-primary transition-colors flex items-center gap-2 text-xs font-semibold shadow-2xs cursor-pointer"
+            title={theme === 'dark' ? 'Switch to Light Ceramic Mode' : 'Switch to Dark Charcoal Mode'}
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? (
+              <>
+                <Sun size={15} className="text-amber-300" />
+                <span className="text-[11px] uppercase tracking-wider font-bold">Light</span>
+              </>
+            ) : (
+              <>
+                <Moon size={15} className="text-gallery-primary" />
+                <span className="text-[11px] uppercase tracking-wider font-bold">Dark</span>
+              </>
+            )}
+          </button>
+
           <button
             onClick={onOpenTickets}
             className="px-4 py-2 bg-gallery-primary text-white text-xs font-bold uppercase tracking-wider rounded hover:opacity-90 transition-opacity border border-gallery-primary shadow-xs"
@@ -95,8 +122,20 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenT
           </button>
         </div>
 
-        {/* Mobile menu hamburger button */}
+        {/* Mobile menu controls */}
         <div className="flex items-center gap-2 lg:hidden">
+          <button
+            onClick={onToggleTheme}
+            className="p-2 rounded border border-gallery-border bg-gallery-card text-gallery-text hover:border-gallery-primary transition-colors flex items-center justify-center shadow-2xs"
+            title={theme === 'dark' ? 'Switch to Light Ceramic Mode' : 'Switch to Dark Charcoal Mode'}
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? (
+              <Sun size={18} className="text-amber-300" />
+            ) : (
+              <Moon size={18} className="text-gallery-primary" />
+            )}
+          </button>
           <button
             onClick={onOpenTickets}
             className="sm:hidden px-3 py-1.5 bg-gallery-primary text-white text-[11px] font-bold uppercase tracking-wider rounded"
@@ -154,7 +193,25 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenT
           >
             Contact Us
           </button>
-          <div className="pt-2 border-t border-gallery-border">
+          <div className="pt-3 border-t border-gallery-border space-y-2">
+            <button
+              onClick={() => {
+                onToggleTheme();
+              }}
+              className="w-full py-2 px-3 rounded border border-gallery-border bg-gallery-card text-gallery-text text-xs uppercase font-bold flex items-center justify-center gap-2"
+            >
+              {theme === 'dark' ? (
+                <>
+                  <Sun size={15} className="text-amber-300" />
+                  <span>Switch to Day Mode (Cream)</span>
+                </>
+              ) : (
+                <>
+                  <Moon size={15} className="text-gallery-primary" />
+                  <span>Switch to Night Mode (Charcoal)</span>
+                </>
+              )}
+            </button>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

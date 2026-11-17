@@ -20,6 +20,22 @@ export default function App() {
   const [selectedTierId, setSelectedTierId] = useState<string | null>(null);
   const [selectedArtifact, setSelectedArtifact] = useState<ArtifactItem | null>(null);
   const [artifactModalOpen, setArtifactModalOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('forma-theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+    }
+    return 'light';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('forma-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
 
   // Synchronize initial page with URL hash if provided (#gallery, #contact)
   useEffect(() => {
@@ -98,6 +114,8 @@ export default function App() {
         currentPage={currentPage}
         onNavigate={handleNavigate}
         onOpenTickets={() => handleOpenTickets('patron')}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
 
       {/* Main Content Router */}
@@ -146,7 +164,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer theme={theme} />
 
       {/* Modals */}
       <TicketModal

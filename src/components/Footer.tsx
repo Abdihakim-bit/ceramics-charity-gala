@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Check } from 'lucide-react';
 import galaData from '../data/gala.json';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  theme?: 'light' | 'dark';
+}
+
+export const Footer: React.FC<FooterProps> = ({ theme = 'light' }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -16,7 +20,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="border-t border-gallery-border bg-gallery-card text-gallery-text">
+    <footer className="border-t border-gallery-border bg-gallery-card text-gallery-text transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-14">
         
         {/* Main Footer Row */}
@@ -26,7 +30,7 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-7 space-y-4">
             <div className="space-y-2">
               <img
-                src="/Logo/horizontal/svg/Artboard 22.svg"
+                src={theme === 'dark' ? '/Logo/horizontal/svg/Artboard 22.svg' : '/Logo/horizontal/svg/Artboard 21.svg'}
                 alt="Fórma"
                 className="h-10 sm:h-12 w-auto object-contain"
               />

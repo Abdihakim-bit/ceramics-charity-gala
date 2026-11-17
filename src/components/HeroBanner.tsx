@@ -21,7 +21,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
           {/* Left Column: Headlines & Event Metadata */}
           <div className="lg:col-span-7 space-y-6">
 
-            {/* Title / Subtitle Placeholders */}
+            {/* Title / Subtitle */}
             <div className="space-y-3">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gallery-text tracking-tight leading-tight">
                 {galaData.title}
