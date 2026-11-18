@@ -83,7 +83,7 @@ export const ArtifactModal: React.FC<ArtifactModalProps> = ({ artifact, isOpen, 
             )}
           </div>
 
-          {/* Right Column: Curatorial Provenance Panel */}
+          {/* Right Column: Details */}
           <div className="lg:col-span-4 p-6 lg:p-8 bg-gallery-card flex flex-col justify-between space-y-6">
             <div className="space-y-6">
               <div>
@@ -123,7 +123,7 @@ export const ArtifactModal: React.FC<ArtifactModalProps> = ({ artifact, isOpen, 
               {/* Curator Description */}
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-gallery-text mb-2">
-                  Curatorial Provenance & Description
+                  Curatorial Description
                 </h4>
                 <p className="text-xs sm:text-sm text-gallery-muted leading-relaxed">
                   {artifact.description}
