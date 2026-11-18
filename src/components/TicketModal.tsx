@@ -94,7 +94,7 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
             </div>
             <h4 className="text-xl font-bold text-gallery-text">Thank You, {formData.name || 'Gala Guest'}!</h4>
             <p className="text-sm text-gallery-muted leading-relaxed">
-              Your reservation for <strong className="text-gallery-text">{guestCount} × {currentTierObj.name}</strong> has been recorded in the system. A confirmation placeholder and tax receipt note have been queued for <span className="text-gallery-text font-semibold">{formData.email}</span>.
+              Your reservation for <strong className="text-gallery-text">{guestCount} × {currentTierObj.name}</strong> has been confirmed. A booking confirmation along with your charitable tax receipt note has been sent to <span className="text-gallery-text font-semibold">{formData.email}</span>.
             </p>
             <div className="bg-gallery-bg p-4 rounded border border-gallery-border text-left text-xs space-y-2 mt-4">
               <div className="flex justify-between">

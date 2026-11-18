@@ -15,21 +15,7 @@
   --color-gallery-secondary: #C0D1B9; /* Secondary badges & subtle tags - Sage Green */
 }
 
-/* Night / Dark Gala Mode (Default) */
-:root,
-:root[data-theme="dark"],
-[data-theme="dark"] {
-  --color-gallery-bg: #645E56;        /* Main page background - Charcoal Espresso canvas */
-  --color-gallery-card: #554F48;      /* Card & panel surfaces - Deep Warm Charcoal card surfaces */
-  --color-gallery-text: #FEF8EA;      /* Headings & primary text - Warm Cream text */
-  --color-gallery-muted: #D5CDC0;     /* Captions, subtext, timestamps - Soft Stone Cream subtext */
-  --color-gallery-border: #777066;    /* Borders, dividers, card outlines - Subtle Muted Charcoal border */
-  --color-gallery-primary: #C5855F;   /* Primary accent & CTA buttons - Terracotta / Rust */
-  --color-gallery-secondary: #C0D1B9; /* Secondary badges & subtle tags - Sage Green */
-}
-
-/* Day / Light Gallery Mode (Toggled via Theme Switcher) */
-:root[data-theme="light"],
+/* Day / Light Gallery Mode Override (Toggled via Theme Switcher) */
 [data-theme="light"] {
   --color-gallery-bg: #FEF8EA;        /* Main page background - Warm Cream / Off-White */
   --color-gallery-card: #FFFFFF;      /* Card & panel surfaces - Pure White Surface */
