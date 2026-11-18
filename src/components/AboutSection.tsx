@@ -24,7 +24,7 @@ export const AboutSection: React.FC = () => {
           {/* Mission Description */}
           <div className="lg:col-span-7 space-y-5 text-sm sm:text-base text-gallery-text leading-relaxed">
             <h3 className="text-xl font-bold text-gallery-text">
-              The Mission: Safeguarding The Crafts of Yesteryear
+              The Mission: Celebrating and Safeguarding The Crafts of Yesteryear
             </h3>
             <p>
               Since the inception of human civilization, ceramics have been an instrumental part of our existence. They are among the oldest surviving records of life. Every culture has taken this functional craft and developed it in ways unique to its existence.  This endurance and cultural significance are precisely why this craft must be celebrated. 
@@ -36,7 +36,7 @@ export const AboutSection: React.FC = () => {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
               <div className="p-3 bg-gallery-card border border-gallery-border rounded text-center shadow-2xs">
                 <span className="block text-xl sm:text-2xl font-extrabold text-gallery-text">$150K</span>
-                <span className="text-[10px] uppercase text-gallery-muted font-bold">2026 Goal</span>
+                <span className="text-[10px] uppercase text-gallery-muted font-bold">2027 Goal</span>
               </div>
               <div className="p-3 bg-gallery-card border border-gallery-border rounded text-center shadow-2xs">
                 <span className="block text-xl sm:text-2xl font-extrabold text-gallery-text">12</span>
@@ -89,10 +89,10 @@ export const AboutSection: React.FC = () => {
 
         </div>
 
-        {/* Advisory / Host Statement Placeholder Box */}
+        {/* Advisory / Host Statement */}
         <div className="p-6 bg-gallery-card border border-dashed border-gallery-border rounded-lg max-w-4xl mx-auto space-y-2">
           <p className="text-xs sm:text-sm text-gallery-muted italic leading-relaxed">
-            "Every vessel holds the memory of hands and heat. By joining us at the gala, you ensure that future generations can witness and learn from living traditions that might otherwise fade."
+            "Art has always been a means to experience, and when those means combine with the utility of everyday tools, it creates something almost purely humane. Ceramics contain the soul of humanity."
           </p>
           <div className="pt-2 text-xs text-gallery-muted">
             — Gala Honorary Chair & Curatorial Committee, {galaData.organization}

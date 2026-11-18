@@ -160,9 +160,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
           </div>
         </div>
 
-        {/* ======================================================== */}
-        {/* 2. Full 2D Ceramic Artworks & Photography Gallery */}
-        {/* ======================================================== */}
+        {/* Full 2D Ceramic Gallery */}
         <div>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
@@ -273,7 +271,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
               Support The Canadian Clay and Glass Gallery
             </h3>
             <p className="text-xs sm:text-sm text-gallery-muted">
-              Bid on these pieces at the Gala Benefit Auction on Saturday, November 28, 2026.
+              Bid on these pieces at the Gala Benefit Auction on Saturday, January 30, 2027.
             </p>
           </div>
 

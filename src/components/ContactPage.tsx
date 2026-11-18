@@ -122,7 +122,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onBackToMain, onOpenTi
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="e.g. +1 (519) 555-0199"
+                      placeholder="e.g. +1 (226) 555-5555"
                       className="w-full px-3 py-2 rounded border border-gallery-border bg-gallery-bg text-gallery-text text-sm focus:outline-none focus:border-gallery-primary"
                     />
                   </div>
