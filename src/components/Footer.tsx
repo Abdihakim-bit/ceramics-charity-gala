@@ -6,7 +6,7 @@ interface FooterProps {
   theme?: 'light' | 'dark';
 }
 
-export const Footer: React.FC<FooterProps> = ({ theme = 'light' }) => {
+export const Footer: React.FC<FooterProps> = ({ theme = 'dark' }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 

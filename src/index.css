@@ -5,17 +5,18 @@
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-mono: monospace;
 
-  /* Official Fórma Brand Identity Palette (Day / Light Gallery Mode) */
-  --color-gallery-bg: #FEF8EA;        /* Main page background - Warm Cream / Off-White */
-  --color-gallery-card: #FFFFFF;      /* Card & panel surfaces - Pure White Surface */
-  --color-gallery-text: #645E56;      /* Headings & primary text - Charcoal Espresso Text */
-  --color-gallery-muted: #827B73;     /* Captions, subtext, timestamps - Muted Slate Charcoal */
-  --color-gallery-border: #E3DACD;    /* Borders, dividers, card outlines - Warm Stone Border */
+  /* Official Fórma Brand Identity Palette (Default: Night / Dark Gala Mode) */
+  --color-gallery-bg: #645E56;        /* Main page background - Charcoal Espresso canvas */
+  --color-gallery-card: #554F48;      /* Card & panel surfaces - Deep Warm Charcoal card surfaces */
+  --color-gallery-text: #FEF8EA;      /* Headings & primary text - Warm Cream text */
+  --color-gallery-muted: #D5CDC0;     /* Captions, subtext, timestamps - Soft Stone Cream subtext */
+  --color-gallery-border: #777066;    /* Borders, dividers, card outlines - Subtle Muted Charcoal border */
   --color-gallery-primary: #C5855F;   /* Primary accent & CTA buttons - Terracotta / Rust */
   --color-gallery-secondary: #C0D1B9; /* Secondary badges & subtle tags - Sage Green */
 }
 
-/* Inverted Fórma Palette (Night / Dark Gala Mode) */
+/* Night / Dark Gala Mode (Default) */
+:root,
 :root[data-theme="dark"],
 [data-theme="dark"] {
   --color-gallery-bg: #645E56;        /* Main page background - Charcoal Espresso canvas */
@@ -23,6 +24,18 @@
   --color-gallery-text: #FEF8EA;      /* Headings & primary text - Warm Cream text */
   --color-gallery-muted: #D5CDC0;     /* Captions, subtext, timestamps - Soft Stone Cream subtext */
   --color-gallery-border: #777066;    /* Borders, dividers, card outlines - Subtle Muted Charcoal border */
+  --color-gallery-primary: #C5855F;   /* Primary accent & CTA buttons - Terracotta / Rust */
+  --color-gallery-secondary: #C0D1B9; /* Secondary badges & subtle tags - Sage Green */
+}
+
+/* Day / Light Gallery Mode (Toggled via Theme Switcher) */
+:root[data-theme="light"],
+[data-theme="light"] {
+  --color-gallery-bg: #FEF8EA;        /* Main page background - Warm Cream / Off-White */
+  --color-gallery-card: #FFFFFF;      /* Card & panel surfaces - Pure White Surface */
+  --color-gallery-text: #645E56;      /* Headings & primary text - Charcoal Espresso Text */
+  --color-gallery-muted: #827B73;     /* Captions, subtext, timestamps - Muted Slate Charcoal */
+  --color-gallery-border: #E3DACD;    /* Borders, dividers, card outlines - Warm Stone Border */
   --color-gallery-primary: #C5855F;   /* Primary accent & CTA buttons - Terracotta / Rust */
   --color-gallery-secondary: #C0D1B9; /* Secondary badges & subtle tags - Sage Green */
 }

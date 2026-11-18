@@ -22,15 +22,15 @@ export default function App() {
   const [artifactModalOpen, setArtifactModalOpen] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('forma-theme');
+      const saved = localStorage.getItem('forma-theme-mode');
       if (saved === 'dark' || saved === 'light') return saved;
     }
-    return 'light';
+    return 'dark';
   });
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('forma-theme', theme);
+    localStorage.setItem('forma-theme-mode', theme);
   }, [theme]);
 
   const toggleTheme = () => {
