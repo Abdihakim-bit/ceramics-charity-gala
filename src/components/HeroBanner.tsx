@@ -27,7 +27,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gallery-text tracking-tight leading-tight">
                 {galaData.title}
               </h1>
-              <p className="text-lg sm:text-xl font-serif-book text-gallery-text/90">
+              <p className="text-lg sm:text-xl font-serif-book font-medium tracking-wide text-gallery-text/90">
                 {galaData.subtitle}
               </p>
             </div>
