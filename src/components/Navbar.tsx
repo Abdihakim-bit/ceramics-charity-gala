@@ -203,12 +203,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               {theme === 'dark' ? (
                 <>
                   <Sun size={15} className="text-amber-300" />
-                  <span>Switch to Day Mode (Cream)</span>
+                  <span>Switch to Light Mode</span>
                 </>
               ) : (
                 <>
                   <Moon size={15} className="text-gallery-primary" />
-                  <span>Switch to Night Mode (Charcoal)</span>
+                  <span>Switch to Dark Mode</span>
                 </>
               )}
             </button>

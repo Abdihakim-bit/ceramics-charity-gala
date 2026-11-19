@@ -59,44 +59,47 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-gallery-card border border-gallery-border rounded-lg p-6 lg:p-8 shadow-2xs">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-gallery-card border border-gallery-border rounded-lg p-5 sm:p-6 lg:p-8 shadow-2xs">
             
-            {/* Left: Model Selector & Provenance */}
-            <div className="lg:col-span-5 space-y-5">
-              
-              {/* Model Tabs */}
-              <div>
-                <label className="block text-[11px] uppercase tracking-wider text-gallery-muted font-bold mb-2">
-                  Select 3D Model:
-                </label>
-                <div className="space-y-2">
-                  {gallery3DModels.map((model) => {
-                    const isSelected = selected3D.id === model.id;
-                    return (
-                      <button
-                        key={model.id}
-                        onClick={() => setSelected3D(model)}
-                        className={`w-full text-left p-3 rounded border text-xs transition-all flex items-center justify-between ${
-                          isSelected
-                            ? 'bg-gallery-primary text-white border-gallery-primary shadow-xs'
-                            : 'bg-gallery-bg text-gallery-text border-gallery-border hover:border-gallery-primary'
-                        }`}
-                      >
-                        <div>
-                          <div className={`text-[10px] uppercase font-bold ${
-                            isSelected ? 'text-white/80' : 'text-gallery-muted'
-                          }`}>
-                            {model.artistOrCulture}
-                          </div>
-                          <div className="font-bold mt-0.5 line-clamp-1">{model.name}</div>
+            {/* Model Selector Tabs */}
+            <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1 order-1">
+              <label className="block text-[11px] uppercase tracking-wider text-gallery-muted font-bold mb-2">
+                Select 3D Model:
+              </label>
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-2">
+                {gallery3DModels.map((model) => {
+                  const isSelected = selected3D.id === model.id;
+                  return (
+                    <button
+                      key={model.id}
+                      onClick={() => setSelected3D(model)}
+                      className={`w-full text-left p-3 rounded border text-xs transition-all flex items-center justify-between cursor-pointer ${
+                        isSelected
+                          ? 'bg-gallery-primary text-white border-gallery-primary shadow-xs'
+                          : 'bg-gallery-bg text-gallery-text border-gallery-border hover:border-gallery-primary'
+                      }`}
+                    >
+                      <div>
+                        <div className={`text-[10px] uppercase font-bold ${
+                          isSelected ? 'text-white/80' : 'text-gallery-muted'
+                        }`}>
+                          {model.artistOrCulture}
                         </div>
-                      </button>
-                    );
-                  })}
-                </div>
+                        <div className="font-bold mt-0.5 line-clamp-1">{model.name}</div>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
+            </div>
 
-              {/* Provenance Card for selected model */}
+            {/* 3D Viewport */}
+            <div className="lg:col-span-7 lg:col-start-6 lg:row-start-1 lg:row-span-2 order-2 h-[380px] sm:h-[460px] lg:h-full min-h-[400px] lg:min-h-[540px]">
+              <ModelViewer modelPath={selected3D.modelPath || '/models/ritual-wine-container.glb'} />
+            </div>
+
+            {/* Details Card */}
+            <div className="lg:col-span-5 lg:col-start-1 lg:row-start-2 order-3">
               <div className="bg-gallery-bg p-5 rounded border border-gallery-border space-y-4">
                 <div className="border-b border-gallery-border pb-2">
                   <span className="text-xs uppercase font-bold text-gallery-text">
@@ -149,12 +152,6 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
                   </div>
                 )}
               </div>
-
-            </div>
-
-            {/* Right: 3D Viewport */}
-            <div className="lg:col-span-7 h-[420px] lg:h-[520px]">
-              <ModelViewer modelPath={selected3D.modelPath || '/models/ritual-wine-container.glb'} />
             </div>
 
           </div>
