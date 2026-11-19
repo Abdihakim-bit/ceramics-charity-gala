@@ -24,7 +24,7 @@ export const AboutSection: React.FC = () => {
           {/* Mission Description */}
           <div className="lg:col-span-7 space-y-5 text-sm sm:text-base text-gallery-text leading-relaxed">
             <h3 className="text-xl font-bold text-gallery-text">
-              The Mission: Celebrating and Safeguarding The Crafts of Yesteryear
+              Our Mission: To Celebrate and Safeguard The Crafts of Yesteryear
             </h3>
             <p>
               Since the inception of human civilization, ceramics have been an instrumental part of our existence. They are among the oldest surviving records of life. Every culture has taken this functional craft and developed it in ways unique to its existence.  This endurance and cultural significance are precisely why this craft must be celebrated. 

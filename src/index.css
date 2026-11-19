@@ -3,6 +3,7 @@
 @theme {
   --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-serif-book: "Besley", Georgia, serif;
   --font-mono: monospace;
 
   /* Official Fórma Brand Identity Palette (Default: Night / Dark Gala Mode) */
@@ -26,8 +27,13 @@
   --color-gallery-secondary: #C0D1B9; /* Secondary badges & subtle tags - Sage Green */
 }
 
-*, *::before, *::after {
-  font-family: var(--font-sans);
+/* Utility classes for typography */
+@utility font-serif-book {
+  font-family: var(--font-serif-book);
+}
+
+.font-serif-book {
+  font-family: var(--font-serif-book);
 }
 
 html {
@@ -43,10 +49,16 @@ body {
   transition: background-color 200ms ease, color 200ms ease;
 }
 
-h1, h2, h3 {
+h1 {
   font-family: var(--font-serif);
   font-weight: 700;
   letter-spacing: -0.015em;
+}
+
+h2, h3, h4 {
+  font-family: var(--font-serif-book);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 input, button, select, textarea {
