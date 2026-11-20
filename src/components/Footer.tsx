@@ -159,9 +159,12 @@ export const Footer: React.FC<FooterProps> = ({ theme = 'dark' }) => {
 
         </div>
 
-        {/* Copyright */}
-        <div className="mt-12 pt-6 border-t border-gallery-border text-center text-xs text-gallery-muted">
+        {/* Copyright & Disclaimer */}
+        <div className="mt-12 pt-6 border-t border-gallery-border text-center text-xs text-gallery-muted space-y-2">
           <p>© 2026 {galaData.organization}. All rights reserved.</p>
+          <p className="text-[11px] text-gallery-muted/80 max-w-2xl mx-auto leading-relaxed">
+            <strong>Disclaimer:</strong> This website is a conceptual student design project created for educational and demonstration purposes. It does not represent an actual event, and no real tickets, reservations, or financial transactions are processed.
+          </p>
         </div>
 
       </div>

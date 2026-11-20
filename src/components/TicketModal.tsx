@@ -234,6 +234,9 @@ export const TicketModal: React.FC<TicketModalProps> = ({ isOpen, selectedTierId
               <ShieldCheck size={16} />
               <span>{isSubmitting ? 'Processing...' : `Confirm Reservation ($${totalPrice} CAD)`}</span>
             </button>
+            <p className="text-[10px] text-center text-gallery-muted">
+              Demo project only - no real financial transactions or bookings are processed.
+            </p>
           </form>
         )}
 
