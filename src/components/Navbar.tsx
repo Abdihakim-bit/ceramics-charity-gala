@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 
 interface NavbarProps {
@@ -17,10 +17,56 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToggleTheme
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('home');
+
+  // Track active in-page section when on main page (ScrollSpy)
+  useEffect(() => {
+    if (currentPage !== 'main') return;
+
+    const sections = ['home', 'schedule', 'ceramics-preview', 'about'];
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 140; // Offset for fixed navbar
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          return;
+        }
+      }
+      setActiveSection('home');
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [currentPage]);
 
   const handleLinkClick = (page: 'main' | 'gallery' | 'contact', sectionId?: string) => {
     setMobileMenuOpen(false);
+    if (page === 'main' && sectionId) {
+      setActiveSection(sectionId);
+    }
     onNavigate(page, sectionId);
+  };
+
+  const isLinkActive = (page: 'main' | 'gallery' | 'contact', sectionId?: string) => {
+    if (page !== currentPage) return false;
+    if (page !== 'main') return true;
+    return activeSection === (sectionId || 'home');
+  };
+
+  const getLinkClass = (page: 'main' | 'gallery' | 'contact', sectionId?: string) => {
+    const active = isLinkActive(page, sectionId);
+    return `transition-colors cursor-pointer ${
+      active ? 'text-gallery-primary font-bold' : 'text-gallery-muted hover:text-gallery-primary'
+    }`;
+  };
+
+  const getMobileLinkClass = (page: 'main' | 'gallery' | 'contact', sectionId?: string) => {
+    const active = isLinkActive(page, sectionId);
+    return `block w-full text-left py-1.5 transition-colors cursor-pointer ${
+      active ? 'text-gallery-primary font-bold' : 'text-gallery-text hover:text-gallery-primary'
+    }`;
   };
 
   return (
@@ -44,30 +90,28 @@ export const Navbar: React.FC<NavbarProps> = ({
         <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-gallery-text">
           <button
             onClick={() => handleLinkClick('main', 'home')}
-            className={`hover:text-gallery-primary transition-colors ${
-              currentPage === 'main' ? 'text-gallery-primary font-bold' : 'text-gallery-muted'
-            }`}
+            className={getLinkClass('main', 'home')}
           >
             Home
           </button>
           
           <button
             onClick={() => handleLinkClick('main', 'schedule')}
-            className="hover:text-gallery-primary text-gallery-muted transition-colors"
+            className={getLinkClass('main', 'schedule')}
           >
             Schedule
           </button>
 
           <button
             onClick={() => handleLinkClick('main', 'ceramics-preview')}
-            className="hover:text-gallery-primary text-gallery-muted transition-colors"
+            className={getLinkClass('main', 'ceramics-preview')}
           >
             Preview
           </button>
 
           <button
             onClick={() => handleLinkClick('main', 'about')}
-            className="hover:text-gallery-primary text-gallery-muted transition-colors"
+            className={getLinkClass('main', 'about')}
           >
             About
           </button>
@@ -75,9 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Gallery Page Link */}
           <button
             onClick={() => handleLinkClick('gallery')}
-            className={`hover:text-gallery-primary transition-colors ${
-              currentPage === 'gallery' ? 'text-gallery-primary font-bold underline underline-offset-4' : 'text-gallery-muted'
-            }`}
+            className={getLinkClass('gallery')}
           >
             Gallery
           </button>
@@ -85,9 +127,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Contact Us Page Link */}
           <button
             onClick={() => handleLinkClick('contact')}
-            className={`hover:text-gallery-primary transition-colors ${
-              currentPage === 'contact' ? 'text-gallery-primary font-bold underline underline-offset-4' : 'text-gallery-muted'
-            }`}
+            className={getLinkClass('contact')}
           >
             Contact Us
           </button>
@@ -157,39 +197,37 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="lg:hidden bg-gallery-bg border-b border-gallery-border px-6 py-5 space-y-3 text-sm">
           <button
             onClick={() => handleLinkClick('main', 'home')}
-            className="block w-full text-left py-1.5 text-gallery-text hover:text-gallery-primary"
+            className={getMobileLinkClass('main', 'home')}
           >
             Home
           </button>
           <button
             onClick={() => handleLinkClick('main', 'schedule')}
-            className="block w-full text-left py-1.5 text-gallery-text hover:text-gallery-primary"
+            className={getMobileLinkClass('main', 'schedule')}
           >
             Schedule
           </button>
           <button
             onClick={() => handleLinkClick('main', 'ceramics-preview')}
-            className="block w-full text-left py-1.5 text-gallery-text hover:text-gallery-primary"
+            className={getMobileLinkClass('main', 'ceramics-preview')}
           >
             Preview
           </button>
           <button
             onClick={() => handleLinkClick('main', 'about')}
-            className="block w-full text-left py-1.5 text-gallery-text hover:text-gallery-primary"
+            className={getMobileLinkClass('main', 'about')}
           >
             About
           </button>
           <button
             onClick={() => handleLinkClick('gallery')}
-            className={`block w-full text-left py-1.5 hover:text-gallery-primary ${
-              currentPage === 'gallery' ? 'text-gallery-primary font-bold' : 'text-gallery-text'
-            }`}
+            className={getMobileLinkClass('gallery')}
           >
             Gallery
           </button>
           <button
             onClick={() => handleLinkClick('contact')}
-            className="block w-full text-left py-1.5 text-gallery-text hover:text-gallery-primary"
+            className={getMobileLinkClass('contact')}
           >
             Contact Us
           </button>
